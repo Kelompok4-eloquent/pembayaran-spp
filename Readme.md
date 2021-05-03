@@ -34,7 +34,7 @@ Level Siswa
 
 ## Cara Install Project E-Pembayaran SPP via GIT
 
-$ git clone https://github.com/ravialdo/pembayaran-spp.git <br>
+$ git clone https://github.com/Kelompok4-eloquent/pembayaran-spp.git <br>
 $ cd pembayaran-spp <br>
 $ composer update <br>
 $ php artisan migrate --seed <br>
@@ -42,7 +42,3 @@ $ php artisan serve <br>
 
 Catatan :
 lakukan terlebih dahulu pembuatan database dengan nama spp_db (.env) sebelum melakukan migrate.
-
-## Penutup
-
-Semoga bermanfaat, dan dapat menambah wawasan kalian.
