@@ -90,7 +90,7 @@ Kalau masih belum berhasil juga
 $ cd pembayaran-spp
 $ cd spp_project
 $ code .
-- buka file .env.example lalu copy isinya dan buat file baru dengan nama .env di dalam project spp_project
+- buka file <mark>.env.example</mark> lalu copy isinya dan buat file baru dengan nama .env di dalam project spp_project
 $ php artisan key:generate
 $ php artisan config:cache >
 $ php artisan cache:clear   >> di tulis 3 3 nya
