@@ -32,7 +32,7 @@ Level Siswa
 
 "Mengenai tambahan lainnya akan di buat sejalan dengan berjalannya project"
 ## Contributors
-Stisla is better because of the [contributors](https://github.com/stisla/stisla/graphs/contributors). Thank them too.
+Contributors
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
