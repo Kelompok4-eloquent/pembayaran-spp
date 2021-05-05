@@ -9,7 +9,7 @@ Dashboard Petugas
             <div class="card-body pt-5 pb-5 pl-5 row">
                 <div class="col-10">
                     <h1 class="display-4">1100</h1>
-                    <p class="text-muted h5 pl-1">Transaksi lunas</p>
+                    <p class="text-muted h5 pl-1">Transaksi berhasil</p>
                 </div>
                 <div class="col-2"><a href="#" class="text-muted h6 ">Tambah Transaksi [+]</a></div>
             </div>
