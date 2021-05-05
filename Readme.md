@@ -51,7 +51,7 @@ Contributors pada project pembayaran-spp
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
-## Cara Install dan contribute Project E-Pembayaran SPP via GIT
+## Cara Install dan jalankan Project E-Pembayaran SPP via GIT
 
 ```
 $ git clone https://github.com/Kelompok4-eloquent/pembayaran-spp.git <br>
