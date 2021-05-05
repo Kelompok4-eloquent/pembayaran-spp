@@ -4,7 +4,7 @@
 
 ## Tentang E-Pembayaran SPP
 
-E-Pembayaran SPP adalah sebuah aplikasi untuk mempermudah sebuah sekolah dalam mendata pembayaran SPP para siswa/siswinya, dengan menggunakan aplikasi ini tentunya akan lebih mengurangi biaya dalam pendataan pembayaran SPP, dan mengurangi penggunaan kertas yang dimana pohon adalah GO GREEN bagi kehidupan manusia.
+E-Pembayaran SPP adalah sebuah aplikasi untuk mempermudah sebuah sekolah dalam mendata pembayaran SPP para siswa/siswinya, dengan menggunakan aplikasi ini tentunya akan lebih mengurangi biaya dalam pendataan pembayaran SPP, dan mengurangi kontak fisik terutama di masa pandemi seperti ini.
 
 Aplikasi ini memiliki 3 hak akses level login yang akan di buat, yang diantaranya :
 
@@ -34,11 +34,14 @@ Level Siswa
 
 ## Cara Install Project E-Pembayaran SPP via GIT
 
+```
 $ git clone https://github.com/Kelompok4-eloquent/pembayaran-spp.git <br>
 $ cd pembayaran-spp <br>
+$ cd spp_project <br>
 $ composer update <br>
 $ php artisan migrate --seed <br>
 $ php artisan serve <br>
-
+```
 Catatan :
 lakukan terlebih dahulu pembuatan database dengan nama spp_db (.env) sebelum melakukan migrate.
+
