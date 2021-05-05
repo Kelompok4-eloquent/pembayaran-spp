@@ -73,7 +73,7 @@ $ php artisan serve
 
 Lalu bila Masih ada eror ikuti cara 
 
-````
+```
 $ cd pembayaran-spp
 $ cd spp_project
 $ composer update
@@ -86,7 +86,7 @@ $ php artisan serve
 
 Kalau masih belum berhasil juga
 
-````
+```
 $ cd pembayaran-spp
 $ cd spp_project
 $ code .
