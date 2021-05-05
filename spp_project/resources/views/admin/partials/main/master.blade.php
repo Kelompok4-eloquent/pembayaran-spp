@@ -19,8 +19,8 @@
 <body>
   <div id="app">
     <div class="main-wrapper">
-      @include('partials.layouts.navbar')
-      @include('partials.layouts.sidebar')
+      @include('admin.partials.layouts.navbar')
+      @include('admin.partials.layouts.sidebar')
      <!-- Main Content -->
      <div class="main-content">
       <section class="section">
@@ -33,7 +33,7 @@
         </div>
       </section>
     </div>
-     @include('partials.layouts.footer')
+     @include('admin.partials.layouts.footer')
     </div>
   </div>
 
