@@ -60,6 +60,14 @@ $ cd spp_project <br>
 $ composer update <br>
 $ php artisan serve <br>
 ```
+Lalu bila ada perubahan silahkan pull,dan cek perubahannya  
+```
+$ git pull https://github.com/Kelompok4-eloquent/pembayaran-spp.git <br>
+$ cd pembayaran-spp <br>
+$ cd spp_project <br>
+$ composer update <br>
+$ php artisan serve <br>
+```
 Catatan :
 lakukan terlebih dahulu pembuatan database dengan nama spp_db (.env) sebelum melakukan migrate.
 
