@@ -13,9 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/dashboard', function () {
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/admin/dashboard', function () {
     return view('admin.dashboard.index');
+});
+Route::get('/petugas/dashboard', function () {
+    return view('petugas.dashboard.index');
 });
