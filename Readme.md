@@ -40,7 +40,7 @@ Contributors pada project pembayaran-spp
 <table>
   <tr>
   <td align="center"><a href="https://github.com/Kelompok4-eloquent"><img src="https://avatars.githubusercontent.com/u/83569332?v=4" width="100px;" alt=""/><br /><sub><b>Kelompok4-eloquent</b></sub></a><br /><a href="#coding-Dzaki Ahnaf Z" title="Backend">Pemilik 📂</a></td>
-    <td align="center"><a href="https://github.com/dzaki236"><img src="https://avatars.githubusercontent.com/u/61301953?v=4" width="100px;" alt=""/><br /><sub><b>Dzaki Ahnaf Z</b></sub></a><br /><a href="#coding-Dzaki Ahnaf Z" title="Backend">Backend 💻</a></td>
+    <td align="center"><a href="https://github.com/dzaki236"><img src="https://avatars.githubusercontent.com/u/61301953?v=4" width="100px;" alt=""/><br /><sub><b>Dzaki 236</b></sub></a><br /><a href="#coding-Dzaki Ahnaf Z" title="Backend">Backend 💻</a></td>
     <td align="center"><a href="https://github.com/MuhammadIqbalRamadhan"><img src="https://avatars.githubusercontent.com/u/68367755?v=4" width="100px;" alt=""/><br /><sub><b>M Iqbal Ramadhan</b></sub></a><br /><a href="#coding-Iqbal Ramadhan" title="Backend">Backend 💻</a></td>
     <td align="center"><a href="https://github.com/aryayudhazachri22"><img src="https://avatars.githubusercontent.com/u/68361013?v=4" width="100px;" alt=""/><br /><sub><b>Arya Yudha Z</b></sub></a><br /><a href="#coding-Arya Yudha" title="Frontend">Frontend 💻</a></td>
     <td align="center"><a href="https://github.com/reyhanesa"><img src="https://avatars.githubusercontent.com/u/83635584?v=4" width="100px;" alt=""/><br /><sub><b>Reyhan Esa</b></sub></a><br /><a href="#coding-Reyhan" title="Frontend">Frontend 💻</a></td>
