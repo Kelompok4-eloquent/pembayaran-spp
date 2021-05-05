@@ -54,20 +54,51 @@ Contributors pada project pembayaran-spp
 ## Cara Install dan jalankan Project E-Pembayaran SPP via GIT
 
 ```
-$ git clone https://github.com/Kelompok4-eloquent/pembayaran-spp.git <br>
-$ cd pembayaran-spp <br>
-$ cd spp_project <br>
-$ composer update <br>
-$ php artisan serve <br>
+$ git clone https://github.com/Kelompok4-eloquent/pembayaran-spp.git
+$ cd pembayaran-spp
+$ cd spp_project
+$ composer update
+$ php artisan serve
 ```
+
 Lalu bila ada perubahan silahkan pull,dan cek perubahannya  
+
 ```
-$ git pull https://github.com/Kelompok4-eloquent/pembayaran-spp.git <br>
-$ cd pembayaran-spp <br>
-$ cd spp_project <br>
-$ composer update <br>
-$ php artisan serve <br>
+$ git pull https://github.com/Kelompok4-eloquent/pembayaran-spp.git
+$ cd pembayaran-spp
+$ cd spp_project
+$ composer update
+$ php artisan serve
 ```
+
+Lalu bila Masih ada eror ikuti cara 
+
+````
+$ cd pembayaran-spp
+$ cd spp_project
+$ composer update
+$ php artisan config:cache >
+$ php artisan cache:clear   >> di tulis 3 3 nya
+$ php artisan config:clear >
+$ php artisan serve
+```
+
+
+Kalau masih belum berhasil juga
+
+````
+$ cd pembayaran-spp
+$ cd spp_project
+$ code .
+- buka file .env.example lalu copy isinya dan buat file baru dengan nama .env di dalam project spp_project
+$ php artisan key:generate
+$ php artisan config:cache >
+$ php artisan cache:clear   >> di tulis 3 3 nya
+$ php artisan config:clear >
+$ php artisan migrate --seed 
+$ php artisan serve
+```
+
 Catatan :
 lakukan terlebih dahulu pembuatan database dengan nama spp_db (.env) sebelum melakukan migrate.
 
