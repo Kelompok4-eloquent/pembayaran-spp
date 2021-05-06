@@ -16,8 +16,8 @@
                     <span>Database</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('admin/data_siswa') || Request::is('admin/data_siswa/tambah_siswa') ? 'active-link' : '' }}"><a class="nav-link" href="{{ url('/admin/data_siswa') }}">Data Siswa</a></li>
-                    <li><a class="nav-link" href="layout-transparent.html">Data Petugas</a></li>
-                    <li><a class="nav-link" href="layout-top-navigation.html">Data Kelas</a></li>
+                    <li class="{{ Request::is('admin/data_petugas') || Request::is('admin/data_petugas/tambah_petugas') ? 'active-link' : '' }}"><a class="nav-link" href="{{ url('/admin/data_petugas') }}">Data Petugas</a></li>
+                    <li class="{{ Request::is('admin/data_kelas') || Request::is('admin/data_kelas/tambah_kelas') ? 'active-link' : '' }}"><a class="nav-link" href="{{ url('/admin/data_kelas') }}">Data Kelas</a></li>
                 </ul>
             </li>
             <li class="menu-header">Starter</li>
