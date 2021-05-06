@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+// Admin
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard.index');
 });
@@ -39,6 +41,13 @@ Route::get('/admin/data_kelas/tambah_kelas', function () {
     return view('admin.data_kelas.tambah_kelas');
 });
 
+// Petugas
 Route::get('/petugas/dashboard', function () {
     return view('petugas.dashboard.index');
+});
+Route::get('/petugas/entry_pembayaran', function () {
+    return view('petugas.entry_pembayaran.index');
+});
+Route::get('/petugas/history_pembayaran', function () {
+    return view('petugas.history_pembayaran.index');
 });

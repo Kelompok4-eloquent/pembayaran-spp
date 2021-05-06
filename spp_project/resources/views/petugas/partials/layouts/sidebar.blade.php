@@ -9,11 +9,11 @@
       <ul class="sidebar-menu">
           <li class="menu-header">Dashboard</li>
          
-                  <li class={{ Request::is('admin/dashboard') ? 'active-menu' : '' }}><a class="nav-link" href="{{ url('/admin/dashboard') }}"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+                  <li class={{ Request::is('petugas/dashboard') ? 'active' : '' }}><a class="nav-link" href="{{ url('/petugas/dashboard') }}"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
           <li class="menu-header">Starter</li>
-          <li><a class="nav-link" href="credits.html"><i class="fas fa-money-check-alt"></i> <span>Entry
+          <li class={{ Request::is('petugas/entry_pembayaran') ? 'active' : '' }}><a class="nav-link" href="{{ url('petugas/entry_pembayaran') }}"><i class="fas fa-money-check-alt"></i> <span>Entry
                       Pembayaran</span></a></li>
-          <li><a class="nav-link" href="credits.html"><i class="fas fa-history"></i> <span>History</span></a></li>
+          <li  class={{ Request::is('petugas/history_pembayaran') ? 'active' : '' }}><a class="nav-link" href="{{ url('petugas/history_pembayaran') }}"><i class="fas fa-history"></i> <span>History</span></a></li>
       </ul>
       </ul>
   </aside>
