@@ -11,11 +11,11 @@
            
                     <li class={{ Request::is('admin/dashboard') ? 'active-menu' : '' }}><a class="nav-link" href="{{ url('/admin/dashboard') }}"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
             <li class="menu-header">Database</li>
-            <li class="nav-item dropdown {{ Request::is('admin/data_siswa') ? 'active-parent active' : '' }}">
+            <li class="nav-item dropdown {{ Request::is('admin/data_siswa') || Request::is('admin/data_siswa/tambah_siswa') ? 'active-parent active' : '' }}">
                 <a class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-database"></i>
                     <span>Database</span></a>
                 <ul class="dropdown-menu">
-                    <li class="{{ Request::is('admin/data_siswa') ? 'active-link' : '' }}"><a class="nav-link" href="{{ url('/admin/data_siswa') }}">Data Siswa</a></li>
+                    <li class="{{ Request::is('admin/data_siswa') || Request::is('admin/data_siswa/tambah_siswa') ? 'active-link' : '' }}"><a class="nav-link" href="{{ url('/admin/data_siswa') }}">Data Siswa</a></li>
                     <li><a class="nav-link" href="layout-transparent.html">Data Petugas</a></li>
                     <li><a class="nav-link" href="layout-top-navigation.html">Data Kelas</a></li>
                 </ul>
