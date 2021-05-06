@@ -16,7 +16,7 @@ Dashboard
         <div class="card card-statistic-2">
             <div class="card-body pt-5 pb-5 pl-5">
                 <h1 class="display-4">2</h1>
-                <a href="#" class="text-muted h5 pl-1">Petugas & administrator > </a>
+                <a href="#" class="text-muted h5 pl-1">Petugas > </a>
             </div>
         </div>
     </div>
