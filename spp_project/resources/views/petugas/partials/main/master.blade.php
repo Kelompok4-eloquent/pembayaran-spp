@@ -19,8 +19,8 @@
 <body>
   <div id="app">
     <div class="main-wrapper">
-      @include('admin.partials.layouts.navbar')
-      @include('admin.partials.layouts.sidebar')
+      @include('petugas.partials.layouts.navbar')
+      @include('petugas.partials.layouts.sidebar')
 
       <!-- Main Content -->
       <div class="main-content">
@@ -31,7 +31,7 @@
             @yield('content')
         </section>
       </div>
-     @include('admin.partials.layouts.footer')
+     @include('petugas.partials.layouts.footer')
     </div>
   </div>
 

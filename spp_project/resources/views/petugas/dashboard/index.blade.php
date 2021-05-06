@@ -1,4 +1,4 @@
-@extends('admin.partials.main.master')
+@extends('petugas.partials.main.master')
 @section('title') 
 Dashboard Petugas
 @endsection
