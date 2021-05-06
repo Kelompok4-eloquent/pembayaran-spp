@@ -11,7 +11,7 @@
            
                     <li class={{ Request::is('admin/dashboard') ? 'active-menu' : '' }}><a class="nav-link" href="{{ url('/admin/dashboard') }}"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
             <li class="menu-header">Database</li>
-            <li class="nav-item dropdown {{ Request::is('admin/data_siswa') || Request::is('admin/data_siswa/tambah_siswa') ? 'active-parent active' : '' }}">
+            <li class="nav-item dropdown {{ Request::is('admin/data_siswa') || Request::is('admin/data_siswa/tambah_siswa') || Request::is('admin/data_petugas') || Request::is('admin/data_petugas/tambah_petugas') || Request::is('admin/data_kelas') || Request::is('admin/data_kelas/tambah_kelas') ? 'active-parent active' : '' }}">
                 <a class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-database"></i>
                     <span>Database</span></a>
                 <ul class="dropdown-menu">
