@@ -54,3 +54,4 @@ Route::get('/petugas/history_pembayaran', function () {
 });
 
 Route::get('/admin/data_kelas/', [AdminController::class,'show_kelas']);
+Route::get('/admin/data_siswa/', [AdminController::class,'show_siswa']);
