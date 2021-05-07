@@ -76,21 +76,9 @@ Lalu bila Masih ada eror ikuti cara
 ```
 $ cd pembayaran-spp
 $ cd spp_project
-$ composer update
-$ php artisan config:cache >
-$ php artisan cache:clear   >> di tulis 3 3 nya
-$ php artisan config:clear >
-$ php artisan serve
-```
-
-
-Kalau masih belum berhasil juga
-
-```
-$ cd pembayaran-spp
-$ cd spp_project
 $ code .
-- buka file `.env.example` lalu copy isinya dan buat file baru dengan nama `.env` di dalam project spp_project
+- buka file `.env.example` lalu copy isinya dan buat file baru dengan nama `.env` di dalam project spp_project .
+- setting database di file `.env` lalu berikan nama database `database_spp`, di line 11-15 di file `.env` .
 $ php artisan key:generate
 $ php artisan config:cache >
 $ php artisan cache:clear   >> di tulis 3 3 nya
@@ -99,6 +87,6 @@ $ php artisan migrate --seed
 $ php artisan serve
 ```
 
-Catatan :
-lakukan terlebih dahulu pembuatan database dengan nama spp_db (.env) sebelum melakukan migrate.
+<b> Catatan : </b>
+lakukan terlebih dahulu pembuatan database dengan nama spp_db / <i>sesuai keinginan (opsional)</i> pada file (.env),sebelum melakukan migrate.
 
