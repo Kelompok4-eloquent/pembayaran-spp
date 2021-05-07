@@ -6,7 +6,22 @@ Dashboard
 <div class="section-header">
     <h1>Data Siswa</h1>
 </div>
-<a href="{{ url('admin/data_siswa/tambah_siswa') }}" class="btn btn-success mb-4">[+] Tambah Data Siswa</a>
+<div class="row">
+    <div class="col-12 col-md-5 col-lg-5 col-xl-5"><a href="{{ url('admin/data_kelas/tambah_siswa') }}"
+            class="btn btn-success mb-4">[+] Tambah Data Siswa</a></div>
+    <div class="col-12 col-md-7 col-lg-7 col-xl-7">
+        <form action="/admin/data_siswa" method="get">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="nisn" placeholder="Search berdasarkan NISN">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-primary" type="submit" id="button-addon2"><i class="fa fa-search"></i></button>
+                </div>
+              </div>
+              
+        </form>
+    </div>
+
+</div>
 <div class="row">
     <div class="col-12 col-md-6 col-lg-12 col-xl-12">
         <div class="card">
@@ -28,18 +43,21 @@ Dashboard
                                 <th>Tahun Masuk</th>
                                 <th>Action</th>
                             </tr>
+                            @foreach ($siswas as $nomor=>$siswa)
+                                
+                            
                             <tr>
-                                <td>1</td>
-                                <td>012345</td>
-                                <td>0123455566</td>
-                                <td>Abdul</td>
-                                <td>XI RPL 2</td>
-                                <td>Jalan Abc</td>
-                                <td>08123456789</td>
-                                <td>2020</td>
+                                <td>{{ $nomor+1 }}</td>
+                                <td>{{ $siswa->nisn }}</td>
+                                <td>{{ $siswa->nis }}</td>
+                                <td>{{ $siswa->nama }}</td>
+                                <td>{{ $siswa->nama_kelas }}</td>
+                                <td>{{ $siswa->alamat }}</td>
+                                <td>{{ $siswa->no_telp }}</td>
+                                <td>{{ $siswa->tahun }}</td>
                                 <td><a href="" class="m-2 btn btn-warning">Edit</a><a href=""
                                         class="btn btn-danger m-2">Delete</a></td>
-                            </tr>
+                            </tr>@endforeach
                         </tbody>
                     </table>
                 </div>
