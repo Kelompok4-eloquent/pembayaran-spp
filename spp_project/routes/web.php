@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,9 +28,9 @@ Route::get('/admin/data_siswa/', function () {
 Route::get('/admin/data_petugas/', function () {
     return view('admin.data_petugas.index');
 });
-Route::get('/admin/data_kelas/', function () {
-    return view('admin.data_kelas.index');
-});
+// Route::get('/admin/data_kelas/', function () {
+//     return view('admin.data_kelas.index');
+// });
 
 Route::get('/admin/data_siswa/tambah_siswa', function () {
     return view('admin.data_siswa.tambah_siswa');
@@ -51,3 +52,5 @@ Route::get('/petugas/entry_pembayaran', function () {
 Route::get('/petugas/history_pembayaran', function () {
     return view('petugas.history_pembayaran.index');
 });
+
+Route::get('/admin/data_kelas/', [AdminController::class,'show_kelas']);
