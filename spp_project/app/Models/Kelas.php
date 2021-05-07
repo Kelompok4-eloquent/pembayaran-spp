@@ -10,4 +10,5 @@ class Kelas extends Model
     use HasFactory;
     protected $table = 'kelas';
     protected $fillable = ['nama_kelas','kompetensi_keahlian','tingkat_kelas'];
+    
 }
