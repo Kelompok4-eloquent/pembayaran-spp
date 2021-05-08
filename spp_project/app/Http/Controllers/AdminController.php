@@ -48,4 +48,14 @@ class AdminController extends Controller
         // return $siswas;
             return view('admin.data_siswa.index',['siswas'=>$siswas]);
     }
+    public function tambah_siswa()
+    {
+        # code...
+        // compact data spp,data tahun masuk
+        $spp = Spp::all();
+        $kelass = Kelas::all();
+        return view('admin.data_siswa.tambah_siswa',['espepe'=>$spp,'kelasan'=>$kelass]);
+        // compact data kelas
+        
+    }
 }

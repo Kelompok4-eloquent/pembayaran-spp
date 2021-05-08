@@ -32,9 +32,9 @@ Route::get('/admin/data_petugas/', function () {
 //     return view('admin.data_kelas.index');
 // });
 
-Route::get('/admin/data_siswa/tambah_siswa', function () {
-    return view('admin.data_siswa.tambah_siswa');
-});
+// Route::get('/admin/data_siswa/tambah_siswa', function () {
+//     return view('admin.data_siswa.tambah_siswa');
+// });
 Route::get('/admin/data_petugas/tambah_petugas', function () {
     return view('admin.data_petugas.tambah_petugas');
 });
@@ -55,3 +55,4 @@ Route::get('/petugas/history_pembayaran', function () {
 
 Route::get('/admin/data_kelas/', [AdminController::class,'show_kelas']);
 Route::get('/admin/data_siswa/', [AdminController::class,'show_siswa']);
+Route::get('/admin/data_siswa/tambah_siswa', [AdminController::class,'tambah_siswa']);
