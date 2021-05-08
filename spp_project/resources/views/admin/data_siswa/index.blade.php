@@ -3,6 +3,7 @@
 Dashboard
 @endsection
 @section('content')
+
 <div class="section-header">
     <h1>Data Siswa</h1>
 </div>
@@ -14,10 +15,11 @@ Dashboard
             <div class="input-group mb-3">
                 <input type="text" class="form-control" name="nisn" placeholder="Search berdasarkan NISN">
                 <div class="input-group-append">
-                  <button class="btn btn-outline-primary" type="submit" id="button-addon2"><i class="fa fa-search"></i></button>
+                    <button class="btn btn-outline-primary" type="submit" id="button-addon2"><i
+                            class="fa fa-search"></i></button>
                 </div>
-              </div>
-              
+            </div>
+
         </form>
     </div>
 
@@ -38,20 +40,22 @@ Dashboard
                                 <th>NIS</th>
                                 <th>Nama</th>
                                 <th>Kelas</th>
+                                <th>Jurusan</th>
                                 <th>Alamat</th>
                                 <th>No Telp</th>
                                 <th>Tahun Masuk</th>
                                 <th>Action</th>
                             </tr>
                             @foreach ($siswas as $nomor=>$siswa)
-                                
-                            
+
+
                             <tr>
                                 <td>{{ $nomor+1 }}</td>
                                 <td>{{ $siswa->nisn }}</td>
                                 <td>{{ $siswa->nis }}</td>
                                 <td>{{ $siswa->nama }}</td>
                                 <td>{{ $siswa->kelas->nama_kelas }}</td>
+                                <td>{{ $siswa->kelas->kompetensi_keahlian }}</td>
                                 <td>{{ $siswa->alamat }}</td>
                                 <td>{{ $siswa->no_telp }}</td>
                                 <td>{{ $siswa->spp_tahun->tahun }}</td>

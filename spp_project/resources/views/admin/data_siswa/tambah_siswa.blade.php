@@ -3,6 +3,26 @@
 Dashboard
 @endsection
 @section('content')
+@push('custom-style')
+<style>
+    textarea {
+        resize: vertical;
+    }
+    .choose::-webkit-file-upload-button {
+  color: white;
+  display: inline-block;
+  background: #951ce0;
+  border: none;
+  padding: 10px;
+  
+  font-weight: 700;
+  border-radius: 3px;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 10pt;
+}
+</style>
+@endpush
 <div class="section-header">
     <h1>Tambah Siswa</h1>
 </div>
@@ -13,7 +33,7 @@ Dashboard
 </div>
 
 <div class="row">
-    <div class="ol-12 col-md-6 col-lg-12 col-xl-12">
+    <div class="col-12 col-md-6 col-lg-12 col-xl-12">
         <div class="card">
             <div class="card-header">
                 <h3>Tambah Data Siswa</h3>
@@ -21,7 +41,7 @@ Dashboard
             <div class="card-body">
                 <div class="row">
                     <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-                         {{-- input type text (typenya aja di pilih) --}}
+                        {{-- input type text (typenya aja di pilih) --}}
                         <div class="form-group">
                             <label>NISN : </label>
                             <input type="text" class="form-control">
@@ -34,7 +54,15 @@ Dashboard
                             <input type="text" class="form-control">
                         </div>
                     </div>
-                   
+                    <br>
+                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="form-group">
+                            <label>Upload foto : </label>
+                            <br>
+                            <input type="file" class="form-control choose" id="customFile">
+                        </div>
+                    </div>
+
                     <br>
                     <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                         <div class="form-group">
@@ -52,7 +80,7 @@ Dashboard
                     <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                         {{-- input type number (typenya aja di pilih) --}}
                         <div class="form-group">
-                            
+
                             <label>No Telp : </label>
                             <input type="number" class="form-control">
                         </div>
@@ -70,17 +98,26 @@ Dashboard
                             <label>Kelas : </label>
                             <select class="form-control">
                                 <option disabled selected>== Pilih Kelas ==</option>
-                                <option>Option 1</option>
+                                @foreach ($kelasan as $kelass)
+
+
+                                <option value="{{ $kelass->id_kelas }}">{{ $kelass->nama_kelas }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
                     <div class="col-12 col-md-6 col-lg-6 col-xl-6">
-                       {{-- Select Option --}}
+                        {{-- Select Option --}}
                         <div class="form-group">
                             <label>Tahun Masuk : </label>
                             <select class="form-control">
                                 <option disabled selected>== Pilih Tahun Masuk ==</option>
-                                <option>Option 1</option>
+                                @foreach ($espepe as $tahun_masuk)
+
+
+                                <option value="{{ $tahun_masuk->id_spp }}">
+                                    {{ $tahun_masuk->tahun. " | " . number_format($tahun_masuk->nominal) }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
