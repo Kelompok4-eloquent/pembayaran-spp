@@ -24,14 +24,17 @@ Dashboard
                                 <th>Level</th>
                                 <th>Action</th>
                             </tr>
+                            @foreach ($petugas as $nomor=>$user)
+                                
+                            
                             <tr>
-                                <td>1</td>
-                                <td>Administrator</td>
-                                <td>Iqbal Jelek</td>
-                                <td>admin</td>
+                                <td>{{ $nomor+1 }}</td>
+                                <td>{{ $user->username }}</td>
+                                <td>{{ $user->nama_petugas }}</td>
+                                <td>{{ $user->admin }}</td>
                                 <td><a href="" class="m-2 btn btn-warning">Edit</a><a href=""
                                         class="btn btn-danger m-2">Delete</a></td>
-                            </tr>
+                            </tr>@endforeach
                         </tbody>
                     </table>
                 </div>
