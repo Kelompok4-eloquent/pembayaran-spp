@@ -53,6 +53,14 @@ Route::get('/petugas/history_pembayaran', function () {
     return view('petugas.history_pembayaran.index');
 });
 
+/*Route Untuk Admin */
+// Petugas Dashboard
+Route::get('/admin/dashboard',[AdminController::class,'dashboard']);
+// Petugas Route
+Route::get('/admin/data_petugas',[AdminController::class,'show_petugas']);
+// Kelas Route
 Route::get('/admin/data_kelas/', [AdminController::class,'show_kelas']);
+
+// Siswa Route
 Route::get('/admin/data_siswa/', [AdminController::class,'show_siswa']);
 Route::get('/admin/data_siswa/tambah_siswa', [AdminController::class,'tambah_siswa']);
