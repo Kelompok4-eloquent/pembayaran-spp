@@ -8,8 +8,19 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Siswa;
 use App\Models\Spp;
 use App\Models\Kelas;
+use App\Models\Pembayaran;
+use App\Models\Petugas;
 class AdminController extends Controller
 {
+
+    // crud kelas
+    public function dashboard()
+    {
+        # code...
+       $pembayaran = Pembayaran::paginate(5);
+    //    dd($pembayaran);
+        return view('admin.dashboard.index',['pembayaran_history'=>$pembayaran]);
+    }
     // crud kelas
     public function show_kelas(Request $request)
     {
@@ -58,4 +69,14 @@ class AdminController extends Controller
         // compact data kelas
         
     }
+
+    // crud data petugas
+    public function show_petugas()
+    {
+        # code...
+        $petugas = Petugas::all();
+        return view('admin.data_petugas.index',['petugas'=>$petugas]);
+    }
+
+    // Show History_data (Search)
 }
