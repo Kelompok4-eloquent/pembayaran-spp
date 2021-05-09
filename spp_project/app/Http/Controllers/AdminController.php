@@ -12,7 +12,10 @@ use App\Models\Pembayaran;
 use App\Models\Petugas;
 class AdminController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     // crud kelas
     public function dashboard()
     {
