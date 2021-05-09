@@ -24,7 +24,7 @@
             <li><a class="nav-link" href="credits.html"><i class="fas fa-calendar-alt"></i> <span>SPP</span></a></li>
             <li><a class="nav-link" href="credits.html"><i class="fas fa-money-check-alt"></i> <span>Entry
                         Pembayaran</span></a></li>
-            <li><a class="nav-link" href="credits.html"><i class="fas fa-history"></i> <span>History</span></a></li>
+            <li class={{ Request::is('admin/history_pembayaran') ? 'active-menu' : '' }}><a class="nav-link" href="{{ url('/admin/history_pembayaran') }}"><i class="fas fa-history"></i> <span>History</span></a></li>
         </ul>
         </ul>
     </aside>

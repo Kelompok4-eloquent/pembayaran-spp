@@ -16,10 +16,15 @@ class AdminController extends Controller
     // crud kelas
     public function dashboard()
     {
+       
         # code...
-       $pembayaran = Pembayaran::paginate(5);
-    //    dd($pembayaran);
-        return view('admin.dashboard.index',['pembayaran_history'=>$pembayaran]);
+       $pembayaran = Pembayaran::orderBy('tanggal_bayar', 'DESC')->paginate(4);
+       $murid = Siswa::all();
+       $petugas = Petugas::all();
+       $kelash = Kelas::all();
+       $pembayaran_lunass = Pembayaran::orderBy('tanggal_bayar', 'ASC')->get();
+    // $pembayaran_lunass = Pembayaran::idDescending()->get( );
+        return view('admin.dashboard.index',['pembayaran_history'=>$pembayaran,'kelas_count'=>$kelash,'petugas_count'=>$petugas,'murid_count'=>$murid,'transaksi_lunas'=>$pembayaran_lunass]);
     }
     // crud kelas
     public function show_kelas(Request $request)
@@ -79,4 +84,9 @@ class AdminController extends Controller
     }
 
     // Show History_data (Search)
+    public function history_pembayaran(Request $request)
+    {
+        # code...
+        return view('admin.data_history_pembayaran.index');
+    }
 }

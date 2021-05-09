@@ -11,7 +11,7 @@ Dashboard
     .choose::-webkit-file-upload-button {
   color: white;
   display: inline-block;
-  background: #951ce0;
+  background: #ff58c4;
   border: none;
   padding: 10px;
   

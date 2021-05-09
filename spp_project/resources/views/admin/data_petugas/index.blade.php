@@ -31,7 +31,7 @@ Dashboard
                                 <td>{{ $nomor+1 }}</td>
                                 <td>{{ $user->username }}</td>
                                 <td>{{ $user->nama_petugas }}</td>
-                                <td>{{ $user->admin }}</td>
+                                <td>{{ $user->level }}</td>
                                 <td><a href="" class="m-2 btn btn-warning">Edit</a><a href=""
                                         class="btn btn-danger m-2">Delete</a></td>
                             </tr>@endforeach
