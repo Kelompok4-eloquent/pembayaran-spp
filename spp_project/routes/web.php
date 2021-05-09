@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -54,18 +54,22 @@ Route::get('/petugas/history_pembayaran', function () {
 });
 
 /*Route Untuk Admin */
+// Route::get('/',[AdminController::class,'dashboard'])->name('dashboard');
 // Dashboard Route
-Route::get('/admin/dashboard',[AdminController::class,'dashboard']);
+Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->name('dashboard');
 
 // History Route
-Route::get('/admin/history_pembayaran',[AdminController::class,'history_pembayaran']);
+Route::get('/admin/history_pembayaran',[AdminController::class,'history_pembayaran'])->name('history_pembayaran');
 
 // Petugas Route
-Route::get('/admin/data_petugas',[AdminController::class,'show_petugas']);
+Route::get('/admin/data_petugas',[AdminController::class,'show_petugas'])->name('show_petugas');
 
 // Kelas Route
-Route::get('/admin/data_kelas/', [AdminController::class,'show_kelas']);
+Route::get('/admin/data_kelas/', [AdminController::class,'show_kelas'])->name('show_kelas');
 
 // Siswa Route
 Route::get('/admin/data_siswa/', [AdminController::class,'show_siswa']);
-Route::get('/admin/data_siswa/tambah_siswa', [AdminController::class,'tambah_siswa']);
+Route::get('/admin/data_siswa/tambah_siswa', [AdminController::class,'tambah_siswa'])->name('tambah_siswa');
+Auth::routes();
+
+// Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->name('dashboard');
