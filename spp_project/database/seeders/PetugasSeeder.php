@@ -19,8 +19,8 @@ class PetugasSeeder extends Seeder
     {
         //
         $petugas = new Petugas();
-        $petugas->username='petugas';
-        $petugas->passwords=bcrypt('petugas');
+        $petugas->username='test';
+        $petugas->password=bcrypt('11111111');
         $petugas->nama_petugas = 'Fadli';
         $petugas->level='petugas';
         $petugas->save();
