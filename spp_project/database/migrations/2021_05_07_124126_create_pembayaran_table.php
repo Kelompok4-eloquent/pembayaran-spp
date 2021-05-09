@@ -16,7 +16,7 @@ class CreatePembayaranTable extends Migration
             $table->increments('id_pembayaran');
             $table->integer('id_petugas')->unsigned();
             $table->char('nisn', 10);
-            $table->date('tanggal_bayar');
+            $table->dateTime('tanggal_bayar');
             $table->string('bulan_dibayar',50)->nullable();
             $table->string('tahun_dibayar',20)->nullable();
             $table->integer('jumlah_bayar')->unsigned();
