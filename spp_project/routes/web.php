@@ -54,10 +54,15 @@ Route::get('/petugas/history_pembayaran', function () {
 });
 
 /*Route Untuk Admin */
-// Petugas Dashboard
+// Dashboard Route
 Route::get('/admin/dashboard',[AdminController::class,'dashboard']);
+
+// History Route
+Route::get('/admin/history_pembayaran',[AdminController::class,'history_pembayaran']);
+
 // Petugas Route
 Route::get('/admin/data_petugas',[AdminController::class,'show_petugas']);
+
 // Kelas Route
 Route::get('/admin/data_kelas/', [AdminController::class,'show_kelas']);
 
