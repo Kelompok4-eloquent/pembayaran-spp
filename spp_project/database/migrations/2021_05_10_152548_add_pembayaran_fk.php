@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddKelasFk extends Migration
+class AddPembayaranFk extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class AddKelasFk extends Migration
      */
     public function up()
     {
-        Schema::table('siswa', function (Blueprint $table) {
+        Schema::table('pembayaran', function (Blueprint $table) {
             //
-            $table->foreign('id_kelas')->references('id_kelas')->on('kelas')->onDelete('cascade')->onUpdate('restrict');
+            $table->foreign('id_petugas')->references('id_petugas')->on('petugas')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('nisn')->references('nisn')->on('siswa')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -26,7 +27,7 @@ class AddKelasFk extends Migration
      */
     public function down()
     {
-        Schema::table('siswa', function (Blueprint $table) {
+        Schema::table('pembayaran', function (Blueprint $table) {
             //
         });
     }
