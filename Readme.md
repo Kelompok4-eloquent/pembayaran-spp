@@ -26,8 +26,6 @@ Level Petugas
 - Lihat Histori Pembayaran
 
 Level Siswa
-- Login
-- Logout
 - Lihat Histori Pembayaran
 
 "Mengenai tambahan lainnya akan di buat sejalan dengan berjalannya project"
@@ -52,16 +50,19 @@ Contributors pada project pembayaran-spp
 <!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 ## Cara Install dan jalankan Project E-Pembayaran SPP via GIT
+<p align="center">
+    <h4>Harap Perhatikan!</h4>
+</p> 
 
+Bila ada ingin melihat perubahan silahkan clone,dan cek perubahannya  
 ```
 $ git clone https://github.com/Kelompok4-eloquent/pembayaran-spp.git
 $ cd pembayaran-spp
 $ cd spp_project
 $ composer update
-$ php artisan serve
 ```
 
-Lalu bila ada perubahan silahkan pull,dan cek perubahannya  
+Atau silahkan pull,dan cek perubahannya  
 
 ```
 $ git pull https://github.com/Kelompok4-eloquent/pembayaran-spp.git
@@ -71,11 +72,12 @@ $ composer update
 $ php artisan serve
 ```
 
-Lalu bila Masih ada eror ikuti cara 
+Lalu langkah selanjutnya
 
 ```
-$ cd pembayaran-spp
-$ cd spp_project
+$ cd pembayaran-spp (/skip, kalau sudah dilakukan)
+$ cd spp_project (/skip, kalau sudah dilakukan)
+$ composer update (/skip, kalau sudah dilakukan)
 $ code .
 - buka file `.env.example` lalu copy isinya dan buat file baru dengan nama `.env` di dalam project spp_project .
 - setting database di file `.env` lalu berikan nama database `database_spp`, di line 11-15 di file `.env` .
