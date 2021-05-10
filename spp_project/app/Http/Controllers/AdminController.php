@@ -16,12 +16,10 @@ class AdminController extends Controller
     {
         $this->middleware('auth');
     }
-    // public function login()
-    // {
-    //     # code...
-    //     return view('admin.login.index');
-    // }
-    // crud kelas
+
+   
+    // dashboard
+    
     public function dashboard()
     {
        
@@ -31,9 +29,11 @@ class AdminController extends Controller
        $petugas = Petugas::all();
        $kelash = Kelas::all();
        $pembayaran_lunass = Pembayaran::orderBy('tanggal_bayar', 'ASC')->get();
-    // $pembayaran_lunass = Pembayaran::idDescending()->get( );
         return view('admin.dashboard.index',['pembayaran_history'=>$pembayaran,'kelas_count'=>$kelash,'petugas_count'=>$petugas,'murid_count'=>$murid,'transaksi_lunas'=>$pembayaran_lunass]);
     }
+
+
+
     // crud kelas
     public function show_kelas(Request $request)
     {
