@@ -16,6 +16,11 @@ class AdminController extends Controller
     {
         $this->middleware('auth');
     }
+    // public function login()
+    // {
+    //     # code...
+    //     return view('admin.login.index');
+    // }
     // crud kelas
     public function dashboard()
     {
