@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -71,5 +72,5 @@ Route::get('/admin/data_kelas/', [AdminController::class,'show_kelas'])->name('s
 // Siswa Route
 Route::get('/admin/data_siswa/', [AdminController::class,'show_siswa']);
 Route::get('/admin/data_siswa/tambah_siswa', [AdminController::class,'tambah_siswa'])->name('tambah_siswa');
-// Route::get('/login',[AdminController::class,'login'])->name('login');
+Route::get('login',[LoginController::class,'show_login_form_admin'])->name('login');
 // Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->name('dashboard');
