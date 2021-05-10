@@ -1,6 +1,4 @@
-<?php
-
-use App\Http\Controllers\AdminController;
+<?php use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
@@ -24,30 +22,35 @@ Auth::routes();
 /*Route Untuk Admin */
 
 // Dashboard Route
-Route::get('/pages/dashboard',[HomeController::class,'dashboard'])->name('dashboard');
+Route::get('/pages/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 
-Route::get('login',[LoginController::class,'show_login_form_admin'])->name('login');
+Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 // Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->name('dashboard');
 
-Route::group(['middleware'=>'admin'],function () {
-    
-// History Route
-Route::get('/pages/history_pembayaran',[HomeController::class,'history_pembayaran'])->name('history_pembayaran');
+Route::group(['middleware'=>'admin'], function () {
 
-// Petugas Route
-Route::get('/pages/data_petugas',[HomeController::class,'show_petugas'])->name('show_petugas');
+        // History Route
+        Route::get('/pages/history_pembayaran', [HomeController::class, 'history_pembayaran'])->name('history_pembayaran');
 
-// Kelas Route
-Route::get('/pages/data_kelas/', [HomeController::class,'show_kelas'])->name('show_kelas');
-Route::get('/pages/data_kelas/tambah_kelas', [HomeController::class,'show_kelas'])->name('show_kelas');
+        // Petugas Route
+        Route::get('/pages/data_petugas', [HomeController::class, 'show_petugas'])->name('show_petugas');
 
-// Siswa Route
-Route::get('/pages/data_siswa/', [HomeController::class,'show_siswa']);
-Route::get('/pages/data_siswa/tambah_siswa', [HomeController::class,'tambah_siswa'])->name('tambah_siswa');
-});
-Route::group(['middleware'=>'petugas'],function () {
-    
-    // History Route
-    Route::get('/pages/history_pembayaran',[HomeController::class,'history_pembayaran'])->name('history_pembayaran');
-    
-    });
+        // Kelas Route
+        Route::get('/pages/data_kelas/', [HomeController::class, 'show_kelas'])->name('show_kelas');
+        Route::get('/pages/data_kelas/tambah_kelas', [HomeController::class, 'show_kelas'])->name('show_kelas');
+
+        // Siswa Route
+        Route::get('/pages/data_siswa/', [HomeController::class, 'show_siswa']);
+        Route::get('/pages/data_siswa/tambah_siswa', [HomeController::class, 'tambah_siswa'])->name('tambah_siswa');
+    }
+
+);
+
+Route::group(['middleware'=>'petugas'], function () {
+
+        // History Route
+        Route::get('/pages/history_pembayaran', [HomeController::class, 'history_pembayaran'])->name('history_pembayaran');
+
+    }
+
+);
