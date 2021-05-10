@@ -1,4 +1,4 @@
-@extends('admin.partials.main.master')
+@extends('pages.partials.main.master')
 @section('title')
 Dashboard
 @endsection
@@ -6,7 +6,7 @@ Dashboard
 <div class="section-header">
     <h1>Data Petugas</h1>
 </div>
-<a href="{{ url('admin/data_petugas/tambah_petugas') }}" class="btn btn-success mb-4">[+] Tambah Data Petugas</a>
+<a href="{{ url('pages/data_petugas/tambah_petugas') }}" class="btn btn-success mb-4">[+] Tambah Data Petugas</a>
 <div class="row">
     <div class="col-12 col-md-6 col-lg-12 col-xl-12">
         <div class="card">

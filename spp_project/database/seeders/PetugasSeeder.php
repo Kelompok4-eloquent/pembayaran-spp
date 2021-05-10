@@ -19,10 +19,17 @@ class PetugasSeeder extends Seeder
     {
         //
         $petugas = new Petugas();
-        $petugas->username='test';
-        $petugas->password=bcrypt('11111111');
+        $petugas->username='Administrator';
+        $petugas->password=bcrypt('admin');
         $petugas->nama_petugas = 'Fadli';
-        $petugas->level='petugas';
+        $petugas->level='admin';
         $petugas->save();
+
+        $petugas2 = new Petugas();
+        $petugas2->username='Petugas1';
+        $petugas2->password=bcrypt('petugas1');
+        $petugas2->nama_petugas = 'Achmad';
+        $petugas2->level='petugas';
+        $petugas2->save();
     }
 }

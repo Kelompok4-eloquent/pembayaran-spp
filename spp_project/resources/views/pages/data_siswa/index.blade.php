@@ -1,4 +1,4 @@
-@extends('admin.partials.main.master')
+@extends('pages.partials.main.master')
 @section('title')
 Dashboard
 @endsection
@@ -8,7 +8,7 @@ Dashboard
     <h1>Data Siswa</h1>
 </div>
 <div class="row">
-    <div class="col-12 col-md-5 col-lg-5 col-xl-5"><a href="{{ url('admin/data_siswa/tambah_siswa') }}"
+    <div class="col-12 col-md-5 col-lg-5 col-xl-5"><a href="{{ url('pages/data_siswa/tambah_siswa') }}"
             class="btn btn-success mb-4">[+] Tambah Data Siswa</a></div>
     <div class="col-12 col-md-7 col-lg-7 col-xl-7">
         <form action="/admin/data_siswa" method="get">

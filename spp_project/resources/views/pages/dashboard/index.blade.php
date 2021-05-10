@@ -1,6 +1,28 @@
-@extends('admin.partials.main.master')
+@extends('pages.partials.main.master')
+@if (auth()->user()->level=="petugas")
+@section('title') 
+Dashboard Petugas
+@endsection
+@section('content')
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="card card-statistic-2">
+            <div class="card-body pt-5 pb-5 pl-5 row">
+                <div class="col-10">
+                    <h1 class="display-4">{{  count($transaksi_lunas) }}</h1>
+                    <p class="text-muted h5 pl-1">Transaksi Terkumpul</p>
+                </div>
+                <div class="col-2"><a href="#" class="text-muted h6 ">Tambah Transaksi [+]</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+@endif
+
+@if(auth()->user()->level == "admin")
 @section('title')
-Dashboard
+Dashboard Admin
 @endsection
 @section('content')
 <div class="row">
@@ -8,7 +30,7 @@ Dashboard
         <div class="card card-statistic-2">
             <div class="card-body pt-5 pb-5 pl-5">
                 <h1 class="display-4">{{ count($murid_count) }}</h1>
-                <a href="{{ url('/admin/data_siswa') }}" class="text-muted h5 pl-1">Data Siswa > </a>
+                <a href="{{ url('/pages/data_siswa') }}" class="text-muted h5 pl-1">Data Siswa > </a>
             </div>
         </div>
     </div>
@@ -16,7 +38,7 @@ Dashboard
         <div class="card card-statistic-2">
             <div class="card-body pt-5 pb-5 pl-5">
                 <h1 class="display-4">{{ count($petugas_count) }}</h1>
-                <a href="{{ url('/admin/data_petugas') }}" class="text-muted h5 pl-1">Petugas > </a>
+                <a href="{{ url('/pages/data_petugas') }}" class="text-muted h5 pl-1">Petugas > </a>
             </div>
         </div>
     </div>
@@ -24,7 +46,7 @@ Dashboard
         <div class="card card-statistic-2">
             <div class="card-body pt-5 pb-5 pl-5">
                 <h1 class="display-4">{{ count($kelas_count) }}</h1>
-                <a href="{{ url('/admin/data_kelas') }}" class="text-muted h5 pl-1">Kelas ></a>
+                <a href="{{ url('/pages/data_kelas') }}" class="text-muted h5 pl-1">Kelas ></a>
             </div>
         </div>
     </div>
@@ -32,7 +54,7 @@ Dashboard
         <div class="card card-statistic-2">
             <div class="card-body pt-5 pb-5 pl-5">
                 <h1 class="display-4">{{  count($transaksi_lunas) }}</h1>
-                <a href="{{ url('/admin/data_history_pembayaran') }}" class="text-muted h5 pl-1">Transaksi Lunas></a>
+                <a href="{{ url('/pages/data_history_pembayaran') }}" class="text-muted h5 pl-1">Transaksi Lunas></a>
             </div>
         </div>
     </div>
@@ -86,3 +108,4 @@ Dashboard
     <div class="col-12 col-xl-12 col-md-12 col-sm-12">{{ $pembayaran_history->links('pagination::bootstrap-4') }}</div>
 </div>
 @endsection
+@endif

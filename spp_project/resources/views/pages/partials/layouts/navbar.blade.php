@@ -13,9 +13,9 @@
                     <i class="fas fa-cog"></i> Change's Passwords
                 </a>
                 <div class="dropdown-divider"></div>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="form-group">
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="form-inline">
                     @csrf
-                    <button type="submit" class=" btn btn-flat has-icon text-danger"><i class="fas fa-sign-out-alt"></i>
+                    <button type="submit" class=" btn mx-auto btn-flat has-icon text-danger"> <i class="fas fa-sign-out-alt"></i> Logout
                       </button>
                 </form>
             </div>

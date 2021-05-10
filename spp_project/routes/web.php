@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -19,58 +20,34 @@ use Illuminate\Support\Facades\Auth;
 //     return view('welcome');
 // });
 
-// Admin
-Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard.index');
-});
-Route::get('/admin/data_siswa/', function () {
-    return view('admin.data_siswa.index');
-});
-Route::get('/admin/data_petugas/', function () {
-    return view('admin.data_petugas.index');
-});
-// Route::get('/admin/data_kelas/', function () {
-//     return view('admin.data_kelas.index');
-// });
-
-// Route::get('/admin/data_siswa/tambah_siswa', function () {
-//     return view('admin.data_siswa.tambah_siswa');
-// });
-Route::get('/admin/data_petugas/tambah_petugas', function () {
-    return view('admin.data_petugas.tambah_petugas');
-});
-Route::get('/admin/data_kelas/tambah_kelas', function () {
-    return view('admin.data_kelas.tambah_kelas');
-});
-
-// Petugas
-Route::get('/petugas/dashboard', function () {
-    return view('petugas.dashboard.index');
-});
-Route::get('/petugas/entry_pembayaran', function () {
-    return view('petugas.entry_pembayaran.index');
-});
-Route::get('/petugas/history_pembayaran', function () {
-    return view('petugas.history_pembayaran.index');
-});
-
 Auth::routes();
 /*Route Untuk Admin */
-// Route::get('/',[AdminController::class,'dashboard'])->name('dashboard');
+
 // Dashboard Route
-Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->name('dashboard');
+Route::get('/pages/dashboard',[HomeController::class,'dashboard'])->name('dashboard');
 
-// History Route
-Route::get('/admin/history_pembayaran',[AdminController::class,'history_pembayaran'])->name('history_pembayaran');
-
-// Petugas Route
-Route::get('/admin/data_petugas',[AdminController::class,'show_petugas'])->name('show_petugas');
-
-// Kelas Route
-Route::get('/admin/data_kelas/', [AdminController::class,'show_kelas'])->name('show_kelas');
-
-// Siswa Route
-Route::get('/admin/data_siswa/', [AdminController::class,'show_siswa']);
-Route::get('/admin/data_siswa/tambah_siswa', [AdminController::class,'tambah_siswa'])->name('tambah_siswa');
 Route::get('login',[LoginController::class,'show_login_form_admin'])->name('login');
 // Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->name('dashboard');
+
+Route::group(['middleware'=>'admin'],function () {
+    
+// History Route
+Route::get('/pages/history_pembayaran',[HomeController::class,'history_pembayaran'])->name('history_pembayaran');
+
+// Petugas Route
+Route::get('/pages/data_petugas',[HomeController::class,'show_petugas'])->name('show_petugas');
+
+// Kelas Route
+Route::get('/pages/data_kelas/', [HomeController::class,'show_kelas'])->name('show_kelas');
+Route::get('/pages/data_kelas/tambah_kelas', [HomeController::class,'show_kelas'])->name('show_kelas');
+
+// Siswa Route
+Route::get('/pages/data_siswa/', [HomeController::class,'show_siswa']);
+Route::get('/pages/data_siswa/tambah_siswa', [HomeController::class,'tambah_siswa'])->name('tambah_siswa');
+});
+Route::group(['middleware'=>'petugas'],function () {
+    
+    // History Route
+    Route::get('/pages/history_pembayaran',[HomeController::class,'history_pembayaran'])->name('history_pembayaran');
+    
+    });

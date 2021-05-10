@@ -57,8 +57,8 @@
 <body>
     <div id="app">
         <div class="main-wrapper main-wrapper-1">
-            @include('admin.partials.layouts.navbar')
-            @include('admin.partials.layouts.sidebar')
+            @include('pages.partials.layouts.navbar')
+            @include('pages.partials.layouts.sidebar')
 
             <!-- Main Content -->
             <div class="main-content">
@@ -66,7 +66,7 @@
                     @yield('content')
                 </section>
             </div>
-            @include('admin.partials.layouts.footer')
+            @include('pages.partials.layouts.footer')
         </div>
     </div>
 

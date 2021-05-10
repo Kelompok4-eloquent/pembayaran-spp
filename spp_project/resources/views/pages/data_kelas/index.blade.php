@@ -1,4 +1,4 @@
-@extends('admin.partials.main.master')
+@extends('pages.partials.main.master')
 @section('title')
 Dashboard
 @endsection
