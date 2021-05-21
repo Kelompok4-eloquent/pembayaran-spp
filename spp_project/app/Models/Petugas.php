@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 
 
 class Petugas extends Authenticatable
@@ -17,7 +18,9 @@ class Petugas extends Authenticatable
      *
      * @var array
      */
+
     protected $table='petugas';
+    // protected $guard = 'petugas';
     protected $primaryKey = 'id_petugas'; // or null
 
     public $incrementing = true;

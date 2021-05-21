@@ -14,10 +14,8 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-// Route::get('/', function () {
-    // return view('home');
-// });
-
+Route::get('/', [HomeController::class, 'dashboard'])->name('dashboard');
+Route::post('/PostLogin',[LoginController::class,'PostLogin'])->name('postlogin');
 Auth::routes();
 /*Route Untuk Admin */
 
@@ -37,7 +35,7 @@ Route::group(['middleware'=>'admin'], function () {
 
         // Kelas Route
         Route::get('/pages/data_kelas/', [HomeController::class, 'show_kelas'])->name('show_kelas');
-        Route::get('/pages/data_kelas/tambah_kelas', [HomeController::class, 'show_kelas'])->name('show_kelas');
+        Route::get('/pages/data_kelas/tambah_kelas', [HomeController::class, 'tambah_kelas'])->name('tambah_kelas');
 
         // Siswa Route
         Route::get('/pages/data_siswa/', [HomeController::class, 'show_siswa']);
@@ -46,11 +44,11 @@ Route::group(['middleware'=>'admin'], function () {
 
 );
 
-Route::group(['middleware'=>'petugas'], function () {
+// Route::group(['middleware'=>'petugas'], function () {
 
-        // History Route
-        Route::get('/pages/history_pembayaran', [HomeController::class, 'history_pembayaran'])->name('history_pembayaran');
+//         // History Route
+//         Route::get('/pages/history_pembayaran', [HomeController::class, 'history_pembayaran'])->name('history_pembayaran');
 
-    }
+//     }
 
-);
+// );
