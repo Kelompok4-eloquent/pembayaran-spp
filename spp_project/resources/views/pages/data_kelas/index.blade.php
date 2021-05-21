@@ -7,7 +7,7 @@ Dashboard
     <h1>Data Kelas</h1>
 </div>
 <div class="row">
-    <div class="col-12 col-md-5 col-lg-5 col-xl-5"><a href="{{ url('admin/data_kelas/tambah_kelas') }}"
+    <div class="col-12 col-md-5 col-lg-5 col-xl-5"><a href="{{ url('pages/data_kelas/tambah_kelas') }}"
             class="btn btn-success mb-4">[+] Tambah Data Kelas</a></div>
     <div class="col-12 col-md-7 col-lg-7 col-xl-7">
         <form action="/admin/data_kelas" method="get">

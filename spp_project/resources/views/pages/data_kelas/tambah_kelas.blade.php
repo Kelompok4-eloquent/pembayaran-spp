@@ -8,7 +8,7 @@ Dashboard
 </div>
 
 <div class="breadcrumb bg-transparent">
-    <div class="breadcrumb-item active"><a href="{{ url('admin/data_kelas') }}">Data Kelas</a></div>
+    <div class="breadcrumb-item active"><a href="{{ url('pages/data_kelas') }}">Data Kelas</a></div>
     <div class="breadcrumb-item">Tambah Data Kelas</div>
 </div>
 
@@ -24,8 +24,11 @@ Dashboard
                         <div class="form-group">
                             <label>Tingkat Kelas : </label>
                             <select class="form-control">
-                                <option disabled selected>== Pilih Tingkat ==</option>
-                                <option>Option 1</option>
+                                <option disabled selected value="">== Pilih Tingkat ==</option>
+                                <option value="X">X</option>
+                                <option value="XI">XI</option>
+                                <option value="XII">XII</option>
+                                <option value="XIII">XIII</option>
                             </select>
                         </div>
                     </div>
@@ -33,7 +36,7 @@ Dashboard
                     <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="form-group">
                             <label>Nama Kelas : </label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" placeholder="contoh:11 Rpl 2">
                         </div>
                     </div>
                    
@@ -41,7 +44,7 @@ Dashboard
                     <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="form-group">
                             <label>Kompetensi Keahlian : </label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" placeholder="Misal : Multimedia">
                         </div>
                     </div>
                     <button class="btn btn-primary btn-block m-3">Simpan</button>

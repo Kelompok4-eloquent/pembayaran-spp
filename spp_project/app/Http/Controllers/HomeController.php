@@ -46,6 +46,11 @@ class HomeController extends Controller
     }
         return view('pages.data_kelas.index',['kelasan'=>$kelas]);
     }
+public function tambah_kelas()
+{
+    # code...
+    return view('pages.data_kelas.tambah_kelas');
+}
 
     // crud siswa
     public function show_siswa(Request $request)
