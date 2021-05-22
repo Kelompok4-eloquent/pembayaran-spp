@@ -49,11 +49,33 @@ public function redirectdashboard()
     }
         return view('pages.data_kelas.index',['kelasan'=>$kelas]);
     }
-public function tambah_kelas()
-{
-    # code...
-    return view('pages.data_kelas.tambah_kelas');
-}
+    public function tambah_kelas()
+    {
+        # code...
+        return view('pages.data_kelas.tambah_kelas');
+    }
+    public function kelas_store(Request $request){
+        $this->validate($request,[
+            'nama_kelas'=>'required',
+            'kompetensi_keahlian'=>'required',
+            'tingkat_kelas'=>'required'
+        ]);
+        
+        Kelas::create([
+            'nama_kelas'=>$request->nama_kelas,
+            'kompetensi_keahlian'=>$request->kompetensi_keahlian,
+            'tingkat_kelas'=>$request->tingkat_kelas
+        ]);
+        $kelas = Kelas::all();
+        return redirect()->action([HomeController::class, 'show_kelas'])
+        ->withSuccess('Sukses! Data Berhasil Di Tambahkan');
+    }
+    public function delete_kelas(Request $id_kelas){
+        $kelas = Kelas::find($id_kelas->id_kelas);
+        $kelas->delete();
+        return redirect()->action([HomeController::class, 'show_kelas'])
+        ->withSuccess('Data Berhasil Di hapus');
+    }
 
     // crud siswa
     public function show_siswa(Request $request)

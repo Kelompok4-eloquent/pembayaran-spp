@@ -25,6 +25,19 @@ Dashboard
 
 <div class="row">
     <div class="col-12 col-md-6 col-lg-12 col-xl-12">
+        @if (session()->has('success'))
+        <div class="alert alert-success">
+            @if(is_array(session('success')))
+                <ul>
+                    @foreach (session('success') as $message)
+                        <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+            @else
+                {{ session('success') }}
+            @endif
+        </div>
+        @endif
         <div class="card">
             <div class="card-header">
                 <h2 class="m-2">Data Kelas</h2>
@@ -54,8 +67,12 @@ Dashboard
                                     <td>{{ $kelas->tingkat_kelas }}</td>
                                     <td>{{ $kelas->nama_kelas }}</td>
                                     <td>{{ $kelas->kompetensi_keahlian }}</td>
-                                    <td><a href="" class="m-2 btn btn-warning">Edit</a><a href=""
-                                            class="btn btn-danger m-2">Delete</a></td>
+                                    <td><a href="" class="m-2 btn btn-warning">Edit</a><form action="/pages/data_kelas/hapus/{{ $kelas->id_kelas}}" method="post">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+                                        <input type="hidden" name="id_kelas" value="{{ $kelas->id_kelas }}">
+                                        <button type="submit" class="btn btn-danger m-2">Delete</button>
+                                    </form></td>
                                 </tr>
                                 @endforeach
                                 @endif

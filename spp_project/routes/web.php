@@ -43,6 +43,8 @@ Route::group(['middleware'=>'admin'], function () {
         // Kelas Route
         Route::get('/pages/data_kelas/', [HomeController::class, 'show_kelas'])->name('show_kelas');
         Route::get('/pages/data_kelas/tambah_kelas', [HomeController::class, 'tambah_kelas'])->name('tambah_kelas');
+        Route::post('/kelas_store',[HomeController::class, 'kelas_store'])->name('kelas_store');
+        Route::delete('/pages/data_kelas/hapus/{id_kelas}', [HomeController::class, 'delete_kelas'])->name('delete_kelas');
 
         // Siswa Route
         Route::get('/pages/data_siswa/', [HomeController::class, 'show_siswa'])->name('show_siswa');
