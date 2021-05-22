@@ -19,7 +19,6 @@ class HomeController extends Controller
 
    
     // dashboard
-    
     public function dashboard()
     {
        
@@ -90,4 +89,39 @@ public function tambah_kelas()
         # code...
         return view('pages.data_history_pembayaran.index');
     }
+
+    // Crud Data SPP
+    public function show_spp()
+    {
+        # code...
+        $tahun_masuk = SPP::all();
+        return view('pages.data_tahun_masuk.index',['SPP'=>$tahun_masuk]);
+    }
+    public function tambah_spp()
+    {
+        # code...
+        // compact data spp,data tahun masuk
+        return view('pages.data_tahun_masuk.tambah_spp_tahunan');
+        // compact data kelas
+        
+    }
+
+     // crud Entry Pembayaran
+     public function siswa_search(Request $request)
+     {
+         # code...
+         if($request->has('nama')){
+         $siswas = Siswa::
+         where('nama','LIKE','%' .$request->nama. '%')->get();
+         }else if($request->has('nisn')){
+            $siswas = Siswa::
+            where('nisn','LIKE','%' .$request->nisn. '%')->get();
+            }
+        else{
+            $siswas = [];
+            //  $siswas = Siswa::where('nis','LIKE','%' .$request->nama. '%')->get();
+         }
+         // return $siswas;
+             return view('pages.entry_pembayaran.index',['siswas'=>$siswas]);
+     }
 }

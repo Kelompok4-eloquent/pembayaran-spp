@@ -14,6 +14,7 @@ class Siswa extends Model
     protected $primaryKey = 'nisn';
     protected $fillable = ['nisn','nis','nama','id_kelas','alamat','no_telp','id_spp'];
     protected $hidden = ['nisn','nama','remember_token'];
+    protected $with = ['kelas','spp_tahun'];
     public function spp_tahun(){
         return $this->belongsTo(Spp::class,'id_spp','id_spp');
     }
