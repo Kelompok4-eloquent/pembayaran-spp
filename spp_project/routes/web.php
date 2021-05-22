@@ -38,17 +38,23 @@ Route::group(['middleware'=>'admin'], function () {
         Route::get('/pages/data_kelas/tambah_kelas', [HomeController::class, 'tambah_kelas'])->name('tambah_kelas');
 
         // Siswa Route
-        Route::get('/pages/data_siswa/', [HomeController::class, 'show_siswa']);
+        Route::get('/pages/data_siswa/', [HomeController::class, 'show_siswa'])->name('show_siswa');
         Route::get('/pages/data_siswa/tambah_siswa', [HomeController::class, 'tambah_siswa'])->name('tambah_siswa');
+
+         // SPP Route
+         Route::get('/pages/spp_tahunan/', [HomeController::class, 'show_spp'])->name('show_spp');
+         Route::get('/pages/spp_tahunan/tambah_spp_tahunan', [HomeController::class, 'tambah_spp'])->name('tambah_spp');
     }
 
 );
 
-// Route::group(['middleware'=>'petugas'], function () {
+Route::group(['middleware'=>'petugas'], function () {
 
-//         // History Route
-//         Route::get('/pages/history_pembayaran', [HomeController::class, 'history_pembayaran'])->name('history_pembayaran');
+        // History Route
+        Route::get('/pages/history_pembayaran', [HomeController::class, 'history_pembayaran'])->name('history_pembayaran');
 
-//     }
+        // Entry_Pembayaran_Route
+        Route::get('/pages/entry_pembayaran/', [HomeController::class, 'siswa_search'])->name('siswa_search');
+    }
 
-// );
+);
