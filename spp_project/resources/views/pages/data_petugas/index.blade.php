@@ -51,7 +51,7 @@ Dashboard
                                     <form action="/pages/data_petugas/hapus/{{ $user->id_petugas }}" method="post">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
-                                <input type="hidden" name="id_petugas" value="{{ $user->id_petugas }}">
+                                        <input type="hidden" name="id_petugas" value="{{ $user->id_petugas }}">
                                         <button type="submit" class="btn btn-danger m-2">Delete</button>
                                     </form>
                                     </td>

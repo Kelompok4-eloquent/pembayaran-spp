@@ -14,7 +14,7 @@ Dashboard
 
 <div class="row">
     
-<form action="/petugas_store" method="POST">
+<form action="/petugas_store" class="col-12" method="POST">
     @csrf
     {{ csrf_field() }}
     <div class="col-12 col-md-6 col-lg-12 col-xl-12">
