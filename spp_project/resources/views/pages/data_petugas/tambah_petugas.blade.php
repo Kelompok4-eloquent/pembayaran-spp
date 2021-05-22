@@ -8,7 +8,7 @@ Dashboard
 </div>
 
 <div class="breadcrumb bg-transparent">
-    <div class="breadcrumb-item active"><a href="{{ url('admin/data_kelas') }}">Data Petugas</a></div>
+    <div class="breadcrumb-item active"><a href="{{ url('/pages/data_petugas') }}">Data Petugas</a></div>
     <div class="breadcrumb-item">Tambah Data Petugas</div>
 </div>
 

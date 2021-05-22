@@ -28,7 +28,7 @@ Dashboard
 </div>
 
 <div class="breadcrumb bg-transparent">
-    <div class="breadcrumb-item active"><a href="{{ url('pages/data_siswa') }}">Data Siswa</a></div>
+    <div class="breadcrumb-item active"><a href="{{ url('/pages/data_siswa') }}">Data Siswa</a></div>
     <div class="breadcrumb-item">Tambah Data Siswa</div>
 </div>
 

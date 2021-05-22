@@ -11,7 +11,7 @@ Dashboard
     <div class="col-12 col-md-5 col-lg-5 col-xl-5"><a href="{{ url('pages/data_siswa/tambah_siswa') }}"
             class="btn btn-success mb-4">[+] Tambah Data Siswa</a></div>
     <div class="col-12 col-md-7 col-lg-7 col-xl-7">
-        <form action="/admin/data_siswa" method="get">
+        <form action="/pages/data_siswa" method="get">
             <div class="input-group mb-3">
                 <input type="text" class="form-control" name="nisn" placeholder="Search berdasarkan NISN">
                 <div class="input-group-append">
