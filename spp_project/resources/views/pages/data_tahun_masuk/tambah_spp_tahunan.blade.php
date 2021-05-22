@@ -13,7 +13,19 @@ Dashboard
 </div>
 
 <div class="row">
-    <div class="ol-12 col-md-6 col-lg-12 col-xl-12">
+    <form action="/spp_store" class="col-12" method="post">
+        @csrf
+        {{ csrf_field() }}
+    <div class="col-12 col-md-6 col-lg-12 col-xl-12">
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
         <div class="card">
             <div class="card-header">
                 <h3>Tambah Data Spp Tahunan</h3>
@@ -24,22 +36,23 @@ Dashboard
                          {{-- input type text (typenya aja di pilih) --}}
                         <div class="form-group">
                             <label>Tahun : </label>
-                            <input type="text" class="form-control">
+                            <input type="text" name="tahun" class="form-control">
                         </div>
                     </div>
                     <br>
                     <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="form-group">
                             <label>Nominal : </label>
-                            <input type="text" class="form-control">
+                            <input type="text" name="nominal" class="form-control">
                         </div>
                     </div>
                     <br>
-                    <button class="btn btn-primary btn-block m-3">Simpan</button>
+                    <button type="submit" class="btn btn-primary btn-block m-3">Simpan</button>
                 </div>
             </div>
         </div>
     </div>
 
 </div>
+</form>
 @endsection

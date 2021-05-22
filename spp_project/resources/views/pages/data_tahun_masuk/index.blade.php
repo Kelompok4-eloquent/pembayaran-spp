@@ -4,14 +4,27 @@ Dashboard
 @endsection
 @section('content')
 <div class="section-header">
-    <h1>Data Petugas</h1>
+    <h1>Data SPP Tahunan</h1>
 </div>
-<a href="{{ url('/pages/spp_tahunan/tambah_spp_tahunan') }}" class="btn btn-success mb-4">[+] Tambah Data Petugas</a>
+<a href="{{ url('/pages/spp_tahunan/tambah_spp_tahunan') }}" class="btn btn-success mb-4">[+] Tambah Data SPP Tahunan</a>
 <div class="row">
     <div class="col-12 col-md-6 col-lg-12 col-xl-12">
+        @if (session()->has('success'))
+        <div class="alert alert-success">
+            @if(is_array(session('success')))
+                <ul>
+                    @foreach (session('success') as $message)
+                        <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+            @else
+                {{ session('success') }}
+            @endif
+        </div>
+        @endif
         <div class="card">
             <div class="card-header">
-                <h2>Data Petugas</h2>
+                <h2>Data SPP Tahunan</h2>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -30,8 +43,12 @@ Dashboard
                                 <td>{{ $nomor+1 }}</td>
                                 <td>{{ $spp->tahun }}</td>
                                 <td>{{ $spp->nominal }}</td>
-                                <td><a href="" class="m-2 btn btn-warning">Edit</a><a href=""
-                                        class="btn btn-danger m-2">Delete</a></td>
+                                <td><a href="" class="m-2 btn btn-warning">Edit</a><form action="/pages/data_tahun_masuk/hapus/{{ $spp->id_spp }}" method="post">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <input type="hidden" name="id_spp" value="{{ $spp->id_spp }}">
+                                    <button type="submit" class="btn btn-danger m-2">Delete</button>
+                                </form></td>
                             </tr>@endforeach
                         </tbody>
                     </table>

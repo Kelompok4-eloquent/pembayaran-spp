@@ -53,6 +53,8 @@ Route::group(['middleware'=>'admin'], function () {
          // SPP Route
          Route::get('/pages/spp_tahunan/', [HomeController::class, 'show_spp'])->name('show_spp');
          Route::get('/pages/spp_tahunan/tambah_spp_tahunan', [HomeController::class, 'tambah_spp'])->name('tambah_spp');
+         Route::post('/spp_store',[HomeController::class, 'spp_store'])->name('spp_store');
+         Route::delete('/pages/data_tahun_masuk/hapus/{id_spp}', [HomeController::class, 'delete_spp'])->name('delete_spp');
     }
 
 );

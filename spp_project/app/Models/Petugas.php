@@ -22,7 +22,6 @@ class Petugas extends Authenticatable
     protected $table='petugas';
     // protected $guard = 'petugas';
     protected $primaryKey = 'id_petugas'; // or null
-
     public $incrementing = true;
     protected $fillable = [
         'username',

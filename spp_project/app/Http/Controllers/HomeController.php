@@ -150,7 +150,7 @@ public function redirectdashboard()
     public function show_spp()
     {
         # code...
-        $tahun_masuk = SPP::all();
+        $tahun_masuk = Spp::all();
         return view('pages.data_tahun_masuk.index',['SPP'=>$tahun_masuk]);
     }
     public function tambah_spp()
@@ -158,9 +158,30 @@ public function redirectdashboard()
         # code...
         // compact data spp,data tahun masuk
         return view('pages.data_tahun_masuk.tambah_spp_tahunan');
-        // compact data kelas
-        
     }
+
+    public function spp_store(Request $request){
+        $this->validate($request,[
+            'tahun'=>'required',
+            'nominal'=>'required',
+        ]);
+        
+        Spp::create([
+            'tahun'=>$request->tahun,
+            'nominal'=>$request->nominal
+
+        ]);
+        $petugas = Spp::all();
+        return redirect()->action([HomeController::class, 'show_spp'])
+        ->withSuccess('Sukses! Data Berhasil Di Tambahkan');
+    }
+    public function delete_spp(Request $id_petugas){
+        $petugas = Spp::find($id_petugas->id_spp);
+        $petugas->delete();
+        return redirect()->action([HomeController::class, 'show_spp'])
+        ->withSuccess('Data Berhasil Di hapus');
+    }
+
 
      // crud Entry Pembayaran
      public function siswa_search(Request $request)
