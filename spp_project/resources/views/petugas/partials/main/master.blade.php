@@ -52,5 +52,7 @@
   <!-- Page Specific JS File -->
   <script src="{{ asset('assets/js/page/index.js') }}"></script>
   <script src="{{ asset('assets/js/page/modules-chartjs.js') }}"></script>
+
+  @stack('custom-script')
 </body>
 </html>
