@@ -64,19 +64,19 @@
                                                 </a>
                                             </div>
                                         </div>
-                                        <input id="password" type="password" class="form-control" value="{{ old('password') }}" name="password"
+                                        <input id="myInput" type="password" class="form-control" value="{{ old('password') }}" name="password"
                                             tabindex="2">
                                     </div>
 
-                                    {{-- <div class="form-group">
+                                    <div class="form-group">
                                         <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                            <input class="custom-control-input" type="checkbox" id="remember" >
 
-                                            <label class="custom-control-label" for="remember">
-                                                {{ __('Remember Me') }}
+                                            <laonclick="myFunction()" class="custom-control-label" for="remember">
+                                               Show Password
                                             </label>
                                         </div>
-                                    </div> --}}
+                                    </div>
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
@@ -134,6 +134,16 @@
     <script src="{{ asset('assets/js/custom.js') }}"></script>
 
     <!-- Page Specific JS File -->
+    <script>
+        function myFunction() {
+          var x = document.getElementById("myInput");
+          if (x.type === "password") {
+            x.type = "text";
+          } else {
+            x.type = "password";
+          }
+        }
+        </script>
 </body>
 
 </html>
