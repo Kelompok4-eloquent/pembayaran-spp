@@ -74,7 +74,7 @@ return [
     */
 
     'providers' => [
-        'petugas' => [
+        'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\Petugas::class,
             'table' => 'petugas'
