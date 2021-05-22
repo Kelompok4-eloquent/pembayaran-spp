@@ -30,11 +30,11 @@ class HomeController extends Controller
        $pembayaran_lunass = Pembayaran::orderBy('tanggal_bayar', 'ASC')->get();
         return view('pages.dashboard.index',['pembayaran_history'=>$pembayaran,'kelas_count'=>$kelash,'petugas_count'=>$petugas,'murid_count'=>$murid,'transaksi_lunas'=>$pembayaran_lunass]);
     }
-public function redirectdashboard()
-{
-    # code...
-    return view('home');
-}
+    public function redirectdashboard()
+    {
+        # code...
+        return view('home');
+    }
 
 
     // crud kelas
@@ -76,6 +76,29 @@ public function redirectdashboard()
         return redirect()->action([HomeController::class, 'show_kelas'])
         ->withSuccess('Data Berhasil Di hapus');
     }
+    public function edit_kelas($id_kelas)
+    {
+        # code...
+        $kelasan = Kelas::find($id_kelas);
+        return view('pages.data_kelas.edit_kelas',['kelas'=>$kelasan]);
+    }
+public function update_kelas($id_kelas,Request $request)
+{
+    # code...
+    $this->validate($request,[
+        'nama_kelas'=>'required',
+        'kompetensi_keahlian'=>'required',
+        'tingkat_kelas'=>'required'
+    ]);
+    $kelas = Kelas::find($id_kelas);
+    $kelas->nama_kelas = $request->nama_kelas;
+    $kelas->kompetensi_keahlian = $request->kompetensi_keahlian;
+    $kelas->tingkat_kelas = $request->tingkat_kelas;
+    $kelas->save();
+    return redirect()->action([HomeController::class, 'show_kelas'])
+        ->withSuccess('Data Berhasil Di ubah');
+}
+
 
     // crud siswa
     public function show_siswa(Request $request)
@@ -93,15 +116,20 @@ public function redirectdashboard()
     public function tambah_siswa()
     {
         # code...
-        // compact data spp,data tahun masuk
+        
         $spp = Spp::all();
         $kelass = Kelas::all();
-        return view('pages.data_siswa.tambah_siswa',['espepe'=>$spp,'kelasan'=>$kelass]);
+        return view('pages.data_siswa.tambah_siswa',
+        // compact data spp,data tahun masuk
+        ['espepe'=>$spp,
         // compact data kelas
+        'kelasan'=>$kelass]);
+        
         
     }
 
-    // crud data petugas
+
+    // Crud data petugas
     public function show_petugas()
     {
         # code...
@@ -137,6 +165,7 @@ public function redirectdashboard()
         return redirect()->action([HomeController::class, 'show_petugas'])
         ->withSuccess('Data Berhasil Di hapus');
     }
+
 
     // Show History_data (Search)
     public function history_pembayaran(Request $request)
@@ -183,7 +212,7 @@ public function redirectdashboard()
     }
 
 
-     // crud Entry Pembayaran
+     // Crud Entry Pembayaran
      public function siswa_search(Request $request)
      {
          # code...

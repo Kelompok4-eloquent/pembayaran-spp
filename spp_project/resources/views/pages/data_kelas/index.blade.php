@@ -67,7 +67,7 @@ Dashboard
                                     <td>{{ $kelas->tingkat_kelas }}</td>
                                     <td>{{ $kelas->nama_kelas }}</td>
                                     <td>{{ $kelas->kompetensi_keahlian }}</td>
-                                    <td><a href="" class="m-2 btn btn-warning">Edit</a><form action="/pages/data_kelas/hapus/{{ $kelas->id_kelas}}" method="post">
+                                    <td><a href="/pages/data_kelas/edit/{{ $kelas->id_kelas}}" class="m-2 btn btn-warning">Edit</a><form action="/pages/data_kelas/hapus/{{ $kelas->id_kelas}}" method="post">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
                                         <input type="hidden" name="id_kelas" value="{{ $kelas->id_kelas }}">

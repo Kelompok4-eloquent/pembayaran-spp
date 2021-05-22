@@ -9,13 +9,14 @@ Dashboard
 
 <div class="breadcrumb bg-transparent">
     <div class="breadcrumb-item active"><a href="{{ url('pages/data_kelas') }}">Data Kelas</a></div>
-    <div class="breadcrumb-item">Tambah Data Kelas</div>
+    <div class="breadcrumb-item">Edit Data Kelas</div>
 </div>
 
 <div class="row">
-    <form action="/kelas_store" class="col-12" method="POST">
+    <form action="/kelas/update/{{$kelas->id_kelas}}" class="col-12" method="POST">
         @csrf
-        {{ csrf_field() }}
+       {{ csrf_field() }}
+       {{ method_field('PUT') }}
     <div class="col-12 col-md-12 col-lg-12 col-xl-12">
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -28,7 +29,7 @@ Dashboard
         @endif
         <div class="card">
             <div class="card-header">
-                <h3>Edit Data Kelas</h3>
+                <h3>Tambah Data Kelas</h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -37,10 +38,10 @@ Dashboard
                             <label>Tingkat Kelas : </label>
                             <select class="form-control" name="tingkat_kelas">
                                 <option disabled selected value="">== Pilih Tingkat ==</option>
-                                <option value="X">X</option>
-                                <option value="XI">XI</option>
-                                <option value="XII">XII</option>
-                                <option value="XIII">XIII</option>
+                                <option value="X" {{ $kelas->tingkat_kelas == 'X' ? 'selected' : '' }}>X</option>
+                                <option value="XI" {{ $kelas->tingkat_kelas == 'XI' ? 'selected' : '' }}>XI</option>
+                                <option value="XII" {{ $kelas->tingkat_kelas == 'XII' ? 'selected' : '' }}>XII</option>
+                                <option value="XIII" {{ $kelas->tingkat_kelas == 'XII' ? 'selected' : '' }}>XIII</option>
                             </select>
                         </div>
                     </div>
@@ -48,7 +49,7 @@ Dashboard
                     <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="form-group">
                             <label>Nama Kelas : </label>
-                            <input type="text" class="form-control"  name="nama_kelas" placeholder="contoh:11 Rpl 2">
+                            <input type="text" class="form-control" value="{{$kelas->nama_kelas}}" name="nama_kelas" placeholder="contoh:11 Rpl 2">
                         </div>
                     </div>
                    
@@ -56,7 +57,7 @@ Dashboard
                     <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="form-group">
                             <label>Kompetensi Keahlian : </label>
-                            <input type="text" class="form-control" name="kompetensi_keahlian" placeholder="Misal : Multimedia">
+                            <input type="text" class="form-control" value="{{$kelas->kompetensi_keahlian}}" name="kompetensi_keahlian" placeholder="Misal : Multimedia">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary btn-block m-3">Simpan</button>

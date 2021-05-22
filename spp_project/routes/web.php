@@ -40,12 +40,14 @@ Route::group(['middleware'=>'admin'], function () {
         Route::get('/pages/data_petugas/tambah_petugas', [HomeController::class, 'tambah_petugas'])->name('tambah_petugas');
         Route::post('/petugas_store',[HomeController::class, 'petugas_store'])->name('petugas_store');
         Route::delete('/pages/data_petugas/hapus/{id_petugas}', [HomeController::class, 'delete_petugas'])->name('delete_petugas');
+
         // Kelas Route
         Route::get('/pages/data_kelas/', [HomeController::class, 'show_kelas'])->name('show_kelas');
         Route::get('/pages/data_kelas/tambah_kelas', [HomeController::class, 'tambah_kelas'])->name('tambah_kelas');
         Route::post('/kelas_store',[HomeController::class, 'kelas_store'])->name('kelas_store');
         Route::delete('/pages/data_kelas/hapus/{id_kelas}', [HomeController::class, 'delete_kelas'])->name('delete_kelas');
-
+        Route::get('/pages/data_kelas/edit/{id_kelas}',[HomeController::class,'edit_kelas'])->name('edit_kelas');
+Route::put('/kelas/update/{id_kelas}',[HomeController::class,'update_kelas'])->name('update_kelas');
         // Siswa Route
         Route::get('/pages/data_siswa/', [HomeController::class, 'show_siswa'])->name('show_siswa');
         Route::get('/pages/data_siswa/tambah_siswa', [HomeController::class, 'tambah_siswa'])->name('tambah_siswa');
