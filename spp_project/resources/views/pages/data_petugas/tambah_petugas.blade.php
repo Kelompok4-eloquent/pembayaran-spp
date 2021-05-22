@@ -13,25 +13,39 @@ Dashboard
 </div>
 
 <div class="row">
-    <div class="ol-12 col-md-6 col-lg-12 col-xl-12">
+    
+<form action="/petugas_store" method="POST">
+    @csrf
+    {{ csrf_field() }}
+    <div class="col-12 col-md-6 col-lg-12 col-xl-12">
+        @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
         <div class="card">
             <div class="card-header">
                 <h3>Tambah Data Petugas</h3>
             </div>
             <div class="card-body">
                 <div class="row">
+                
                     <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                          {{-- input type text (typenya aja di pilih) --}}
                         <div class="form-group">
                             <label>Username : </label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="username" value="{{ old('username', '') }}">
                         </div>
                     </div>
                     <br>
                     <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="form-group">
                             <label>Nama Petugas : </label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="nama_petugas" value="{{ old('nama_petugas', '') }}">
                         </div>
                     </div>
                    
@@ -39,24 +53,28 @@ Dashboard
                     <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="form-group">
                             <label>Set Password : </label>
-                            <input type="password" class="form-control">
+                            <input type="password" class="form-control" name="password" value="{{ old('password', '') }}">
                         </div>
                     </div>
                     <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="form-group">
                             <label>Level : </label>
-                            <select class="form-control">
-                                <option disabled selected>== Pilih Level ==</option>
-                                <option>Option 1</option>
+                            <select class="form-control" name="level">
+                                <option disabled selected value=" ">== Pilih Level ==</option>
+                                <option value="admin">Admin</option>
+                                <option value="petugas">Petugas</option>
                             </select>
                         </div>
                     </div>
                     <br>
-                    <button class="btn btn-primary btn-block m-3">Simpan</button>
+                    <button type="submit" class="btn btn-primary btn-block m-3">Simpan</button>
                 </div>
+           
             </div>
+       
         </div>
     </div>
 
 </div>
+</form>
 @endsection

@@ -30,7 +30,11 @@ class HomeController extends Controller
        $pembayaran_lunass = Pembayaran::orderBy('tanggal_bayar', 'ASC')->get();
         return view('pages.dashboard.index',['pembayaran_history'=>$pembayaran,'kelas_count'=>$kelash,'petugas_count'=>$petugas,'murid_count'=>$murid,'transaksi_lunas'=>$pembayaran_lunass]);
     }
-
+public function redirectdashboard()
+{
+    # code...
+    return view('home');
+}
 
 
     // crud kelas
@@ -82,6 +86,35 @@ public function tambah_kelas()
         $petugas = Petugas::all();
         return view('pages.data_petugas.index',['petugas'=>$petugas]);
     }
+    public function tambah_petugas()
+    {
+        # code...
+        return view('pages.data_petugas.tambah_petugas');
+    }
+    public function petugas_store(Request $request){
+        $this->validate($request,[
+            'username'=>'required',
+            'nama_petugas'=>'required',
+            'password'=>'required',
+            'level'=>'required',
+        ]);
+        
+        Petugas::create([
+            'username'=>$request->username,
+            'nama_petugas'=>$request->nama_petugas,
+            'password'=>bcrypt($request->password),
+            'level'=>$request->level
+        ]);
+        $petugas = Petugas::all();
+        return redirect()->action([HomeController::class, 'show_petugas'])
+        ->withSuccess('Sukses! Data Berhasil Di Tambahkan');
+    }
+    public function delete_petugas(Request $id_petugas){
+        $petugas = Petugas::find($id_petugas->id_petugas);
+        $petugas->delete();
+        return redirect()->action([HomeController::class, 'show_petugas'])
+        ->withSuccess('Data Berhasil Di hapus');
+    }
 
     // Show History_data (Search)
     public function history_pembayaran(Request $request)
@@ -89,6 +122,7 @@ public function tambah_kelas()
         # code...
         return view('pages.data_history_pembayaran.index');
     }
+    
 
     // Crud Data SPP
     public function show_spp()

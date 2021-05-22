@@ -13,8 +13,13 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Route::get('/', function () {
+//     //
+//     return view('home');
+// });
 
-Route::get('/', [HomeController::class, 'dashboard'])->name('dashboard');
+
+Route::get('/', [HomeController::class, 'dashboard'])->name('redirectdashboard');
 Route::post('/PostLogin',[LoginController::class,'PostLogin'])->name('postlogin');
 Auth::routes();
 /*Route Untuk Admin */
@@ -32,7 +37,9 @@ Route::group(['middleware'=>'admin'], function () {
 
         // Petugas Route
         Route::get('/pages/data_petugas', [HomeController::class, 'show_petugas'])->name('show_petugas');
-
+        Route::get('/pages/data_petugas/tambah_petugas', [HomeController::class, 'tambah_petugas'])->name('tambah_petugas');
+        Route::post('/petugas_store',[HomeController::class, 'petugas_store'])->name('petugas_store');
+        Route::delete('/pages/data_petugas/hapus/{id_petugas}', [HomeController::class, 'delete_petugas'])->name('delete_petugas');
         // Kelas Route
         Route::get('/pages/data_kelas/', [HomeController::class, 'show_kelas'])->name('show_kelas');
         Route::get('/pages/data_kelas/tambah_kelas', [HomeController::class, 'tambah_kelas'])->name('tambah_kelas');
