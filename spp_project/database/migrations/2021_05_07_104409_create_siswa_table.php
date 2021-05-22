@@ -21,7 +21,7 @@ class CreateSiswaTable extends Migration
                 $table->longText('alamat')->nullable();
                 $table->string('no_telp',18)->nullable();
                 $table->integer('id_spp')->unsigned();
-                // $table->rememberToken();
+                $table->string('foto',255)->nullable();
                 $table->timestamps();
         });
     }
