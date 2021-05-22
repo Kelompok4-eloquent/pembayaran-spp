@@ -22,7 +22,7 @@
                 </ul>
             </li>
             <li class="menu-header">Starter</li>
-            <li><a class="nav-link" href="credits.html"><i class="fas fa-calendar-alt"></i> <span>SPP</span></a></li>
+            <li class={{ Request::is('pages/spp_tahunan') ? 'active-menu' : '' }}><a class="nav-link" href="{{ url('/pages/spp_tahunan') }}"><i class="fas fa-calendar-alt"></i> <span>SPP</span></a></li>
             <li><a class="nav-link" href="credits.html"><i class="fas fa-money-check-alt"></i> <span>Entry
                         Pembayaran</span></a></li>
             <li class={{ Request::is('pages/history_pembayaran') ? 'active-menu' : '' }}><a class="nav-link" href="{{ url('/pages/history_pembayaran') }}"><i class="fas fa-history"></i> <span>History</span></a></li>
@@ -44,7 +44,7 @@
            
                     <li class={{ Request::is('pages/dashboard') ? 'active-menu' : '' }}><a class="nav-link" href="{{ url('/pages/dashboard') }}"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
             <li class="menu-header">Starter</li>
-            <li><a class="nav-link" href="credits.html"><i class="fas fa-money-check-alt"></i> <span>Entry
+            <li class={{ Request::is('pages/entry_pembayaran') ? 'active-menu' : '' }}><a class="nav-link" href="{{ url('/pages/entry_pembayaran') }}"><i class="fas fa-money-check-alt"></i> <span>Entry
                         Pembayaran</span></a></li>
             <li class={{ Request::is('pages/history_pembayaran') ? 'active-menu' : '' }}><a class="nav-link" href="{{ url('/pages/history_pembayaran') }}"><i class="fas fa-history"></i> <span>History</span></a></li>
         </ul>
