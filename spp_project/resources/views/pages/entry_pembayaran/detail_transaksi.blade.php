@@ -153,7 +153,7 @@ Entry Pembayaran
                                     <td>{{ $nomor+1 }}</td>
                                     <td>{{ $pembayaran_user->bulan_dibayar }}</td>
                                     <td>{{ $pembayaran_user->tahun_dibayar }}</td>
-                                    <td>{{ $pembayaran_user->tanggal_bayar }}</td>
+                                    <td>{{ date("j F , Y",strtotime($pembayaran_user->tanggal_bayar)) }}</td>
                                     <td>{{ $pembayaran_user->jumlah_bayar }}</td>
                                     <td>{{ $pembayaran_user->jumlah_dibayar }}</td>
                                     <td>{{ $pembayaran_user->jumlah_dibayar - $pembayaran_user->jumlah_bayar }}</td>
