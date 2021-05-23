@@ -18,15 +18,19 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            overflow-x : hidden;
+            overflow-y:hidden; 
+        }
+    </style>
 </head>
-
 <body>
-    <div id="app">
-        <section class="section">
-            <div class="container mt-5">
-                <div class="row">
-                    <div
-                        class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">@if ($errors->any())
+    <div class="row bg-white">
+        <div class="col-12">
+            @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
                                 @foreach ($errors->all() as $error)
@@ -35,85 +39,61 @@
                             </ul>
                         </div>
                     @endif
-                        <div class="login-brand">
-                            <img src="../assets/img/stisla-fill.svg" alt="logo" width="100"
-                                class="shadow-light rounded-circle">
-                        </div>
-                        
-                        <div class="card card-primary">
-                            <div class="card-header">
-                                <h4>Login</h4>
-                            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-6 col-xl-6 bgs">
+            <img src="{{asset('assets/img/bg.png')}}" width="600em" alt="">
+        </div>
+        <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+            <br>
+            <br>
+            <br>
+            <br>
+       <h1>Login</h1>
+       <hr>
+       <br>
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+                <div class="form-group">
+                   
+                    <label for="email">Username</label>
+                    <input id="email" type="text" value="{{ old('username') }}" class="form-control" name="username" tabindex="1">
+                   
+                </div>
 
-                            <div class="card-body">
-                                <form method="POST" action="{{ route('login') }}">
-                                    @csrf
-                                    <div class="form-group">
-                                       
-                                        <label for="email">Username</label>
-                                        <input id="email" type="text" value="{{ old('username') }}" class="form-control" name="username" tabindex="1">
-                                       
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="d-block">
-                                            <label for="password" class="control-label">Password</label>
-                                            <div class="float-right">
-                                                <a href="auth-forgot-password.html" class="text-small">
-                                                    Forgot Password?
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <input id="myInput" type="password" class="form-control" value="{{ old('password') }}" name="password"
-                                            tabindex="2">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" id="remember" >
-
-                                            <laonclick="myFunction()" class="custom-control-label" for="remember">
-                                               Show Password
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
-                                            Login
-                                        </button>
-                                    </div>
-                                </form>
-                                <div class="text-center mt-4 mb-3">
-                                    <div class="text-job text-muted">Login With Social</div>
-                                </div>
-                                <div class="row sm-gutters">
-                                    <div class="col-6">
-                                        <a class="btn btn-block btn-social btn-facebook">
-                                            <span class="fab fa-facebook"></span> Facebook
-                                        </a>
-                                    </div>
-                                    <div class="col-6">
-                                        <a class="btn btn-block btn-social btn-twitter">
-                                            <span class="fab fa-twitter"></span> Twitter
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="mt-5 text-muted text-center">
-                            Don't have an account? <a href="auth-register.html">Create One</a>
-                        </div>
-                        <div class="simple-footer">
-                            Copyright &copy; Stisla 2018
+                <div class="form-group">
+                    <div class="d-block">
+                        <label for="password" class="control-label">Password</label>
+                        <div class="float-right">
+                            <a href="auth-forgot-password.html" class="text-small">
+                                Forgot Password?
+                            </a>
                         </div>
                     </div>
+                    <input id="myInput" type="password" class="form-control" value="{{ old('password') }}" name="password"
+                        tabindex="2">
                 </div>
-            </div>
-        </section>
-    </div>
 
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" id="remember" >
+
+                        <label onclick="myFunction()" class="custom-control-label" for="remember">
+                           Show Password
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
+                        Login
+                    </button>
+                </div>
+            </form>
+            <br>
+            <br>
+        </div>
+       
+    </div>
     <!-- General JS Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -145,5 +125,3 @@
         }
         </script>
 </body>
-
-</html>
