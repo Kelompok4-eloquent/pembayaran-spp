@@ -74,7 +74,7 @@ class HomeController extends Controller
     }
     public function delete_kelas(Request $id_kelas)
     {
-        $kelas = Kelas::find($id_kelas->id_kelas);
+        $kelas = Kelas::findOrFail($id_kelas->id_kelas);
         $kelas->delete();
         return redirect()->action([HomeController::class, 'show_kelas'])
             ->withSuccess('Data Berhasil Di hapus');
@@ -82,7 +82,7 @@ class HomeController extends Controller
     public function edit_kelas($id_kelas)
     {
         # code...
-        $kelasan = Kelas::find($id_kelas);
+        $kelasan = Kelas::findOrFail($id_kelas);
         return view('pages.data_kelas.edit_kelas', ['kelas' => $kelasan]);
     }
     public function update_kelas($id_kelas, Request $request)
@@ -93,7 +93,7 @@ class HomeController extends Controller
             'kompetensi_keahlian' => 'required',
             'tingkat_kelas' => 'required'
         ]);
-        $kelas = Kelas::find($id_kelas);
+        $kelas = Kelas::findOrFail($id_kelas);
         $kelas->nama_kelas = $request->nama_kelas;
         $kelas->kompetensi_keahlian = $request->kompetensi_keahlian;
         $kelas->tingkat_kelas = $request->tingkat_kelas;
@@ -169,7 +169,7 @@ class HomeController extends Controller
     }
     public function delete_siswa(Request $request)
     {
-        $siswa = Siswa::find($request->nisn);
+        $siswa = Siswa::findOrFail($request->nisn);
         unlink("user_picture/".$siswa->foto);
         Siswa::where("nisn", $siswa->nisn)->delete();
         return redirect()->action([HomeController::class, 'show_siswa'])
@@ -209,7 +209,7 @@ class HomeController extends Controller
     }
     public function delete_petugas(Request $id_petugas)
     {
-        $petugas = Petugas::find($id_petugas->id_petugas);
+        $petugas = Petugas::findOrFail($id_petugas->id_petugas);
         $petugas->delete();
         return redirect()->action([HomeController::class, 'show_petugas'])
             ->withSuccess('Data Berhasil Di hapus');
@@ -257,7 +257,7 @@ class HomeController extends Controller
     }
     public function delete_spp(Request $id_petugas)
     {
-        $petugas = Spp::find($id_petugas->id_spp);
+        $petugas = Spp::findOrFail($id_petugas->id_spp);
         $petugas->delete();
         return redirect()->action([HomeController::class, 'show_spp'])
             ->withSuccess('Data Berhasil Di hapus');
@@ -282,7 +282,7 @@ class HomeController extends Controller
     public function detail_transaksi($nisn)
     {
         # code...
-        $siswa = Siswa::where('nisn', '=', $nisn)->first();
+        $siswa = Siswa::where('nisn', '=', $nisn)->firstOrFail();
         $pembayaran_lunass = Pembayaran::where('nisn', '=', $nisn)->get();
         return view('pages.entry_pembayaran.detail_transaksi', ['siswa' => $siswa, 'pembayaran_lunass' => $pembayaran_lunass]);
     }

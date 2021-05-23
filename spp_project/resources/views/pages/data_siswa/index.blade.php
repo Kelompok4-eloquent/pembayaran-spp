@@ -120,10 +120,12 @@ Dashboard
                         swal("Poof! Your imaginary file has been deleted!", {
                             icon: "success",
                         });
-                    }
-                });location.reload();
+                        location.reload(); }
+                    
+                });
+                location.reload();
             });
-            location.reload();
+            
     });
 
 </script>
