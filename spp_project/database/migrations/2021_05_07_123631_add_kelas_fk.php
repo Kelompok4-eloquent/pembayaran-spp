@@ -15,7 +15,7 @@ class AddKelasFk extends Migration
     {
         Schema::table('siswa', function (Blueprint $table) {
             //
-            $table->foreign('id_kelas')->references('id_kelas')->on('kelas')->onDelete('cascade')->onUpdate('restrict');
+            $table->foreign('id_kelas')->references('id_kelas')->on('kelas')->onDelete('set null')->onUpdate('cascade');
         });
     }
 

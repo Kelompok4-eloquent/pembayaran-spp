@@ -17,10 +17,10 @@ class CreateSiswaTable extends Migration
                 $table->char('nisn', 10)->primary();
                 $table->char('nis', 10)->unique();
                 $table->string('nama',100)->nullable();
-                $table->integer('id_kelas')->unsigned();
+                $table->integer('id_kelas')->unsigned()->nullable();
                 $table->longText('alamat')->nullable();
                 $table->string('no_telp',18)->nullable();
-                $table->integer('id_spp')->unsigned();
+                $table->integer('id_spp')->unsigned()->nullable();
                 $table->string('foto',255)->nullable();
                 $table->timestamps();
         });
