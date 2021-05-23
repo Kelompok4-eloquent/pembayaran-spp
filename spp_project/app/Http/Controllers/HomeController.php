@@ -12,8 +12,10 @@ use App\Models\Pembayaran;
 use App\Models\Petugas;
 use Illuminate\Support\Facades\File;
 use PDF;
+
 class HomeController extends Controller
 {
+    // Auth __construct
     public function __construct()
     {
         $this->middleware('auth');
@@ -170,7 +172,7 @@ class HomeController extends Controller
     public function delete_siswa(Request $request)
     {
         $siswa = Siswa::findOrFail($request->nisn);
-        unlink("user_picture/".$siswa->foto);
+        unlink("user_picture/" . $siswa->foto);
         Siswa::where("nisn", $siswa->nisn)->delete();
         return redirect()->action([HomeController::class, 'show_siswa'])
             ->withSuccess('Data Berhasil Di hapus');
@@ -216,7 +218,7 @@ class HomeController extends Controller
     }
 
 
-    // Show History_data (Search)
+    // Show History_data (Full)
     public function history_pembayaran()
     {
         # code...
@@ -274,16 +276,22 @@ class HomeController extends Controller
             $siswas = Siswa::where('nisn', 'LIKE', '%' . $request->nisn . '%')->get();
         } else {
             $siswas = [];
-            //  $siswas = Siswa::where('nis','LIKE','%' .$request->nama. '%')->get();
+            //  Null Data Parse
         }
-        // return $siswas;
+        // return $siswas
         return view('pages.entry_pembayaran.index', ['siswas' => $siswas]);
     }
-    public function detail_transaksi($nisn)
+    public function detail_transaksi($nisn, Request $request)
     {
         # code...
         $siswa = Siswa::where('nisn', '=', $nisn)->firstOrFail();
-        $pembayaran_lunass = Pembayaran::where('nisn', '=', $nisn)->get();
+        // dd($request->tahun_dibayar);
+        if ($request->has('tahun_dibayar')) {
+            $pembayaran_lunass = Pembayaran::where([['nisn', "=", $nisn], ['tahun_dibayar', 'LIKE', '%' . $request->tahun_dibayar . '%']])->get();
+        } else {
+            $pembayaran_lunass = Pembayaran::where('nisn', "=", $nisn)->get();
+        }
+
         return view('pages.entry_pembayaran.detail_transaksi', ['siswa' => $siswa, 'pembayaran_lunass' => $pembayaran_lunass]);
     }
     public function store_transaksi(Request $request)

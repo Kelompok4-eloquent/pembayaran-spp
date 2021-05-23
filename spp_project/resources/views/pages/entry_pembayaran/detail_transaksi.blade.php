@@ -15,13 +15,13 @@ Entry Pembayaran
         @if (session()->has('success'))
         <div class="alert alert-success">
             @if(is_array(session('success')))
-                <ul>
-                    @foreach (session('success') as $message)
-                        <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
+            <ul>
+                @foreach (session('success') as $message)
+                <li>{{ $message }}</li>
+                @endforeach
+            </ul>
             @else
-                {{ session('success') }}
+            {{ session('success') }}
             @endif
         </div>
         @endif
@@ -32,7 +32,8 @@ Entry Pembayaran
                     <p class="h5">NIS : {{$siswa->nis}}</p>
                     <p class="h5">Nama Lengkap : {{$siswa->nama}}</p>
                     <p class="h5">Kelas : {{($siswa->kelas==NULL)?"Tak Di definisikan":$siswa->kelas->nama_kelas}}</p>
-                    <p class="h5">Kompetensi keahlian : {{($siswa->kelas==NULL)?"Tak Di definisikan":$siswa->kelas->kompetensi_keahlian}}</p>
+                    <p class="h5">Kompetensi keahlian :
+                        {{($siswa->kelas==NULL)?"Tak Di definisikan":$siswa->kelas->kompetensi_keahlian}}</p>
                     <p class="h5">No Telp : {{$siswa->no_telp}}</p>
                     <p class="h5">Alamat : {{$siswa->alamat}}</p>
                     <p class="h5">Tahun Masuk : {{$siswa->spp_tahun->tahun}}</p>
@@ -100,7 +101,7 @@ Entry Pembayaran
                             <label>Tahun Bayar : </label>
                             <input type="text" class="form-control" name="tahun_dibayar"
                                 value="{{old('tahun_dibayar','')}}">
-                                @error('tahun_dibayar')
+                            @error('tahun_dibayar')
                             <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>
@@ -120,6 +121,19 @@ Entry Pembayaran
     <div class="col-12 col-md-12 col-lg-12 col-xl-12 card p-2">
         <div class="card-body">
             <div class="row">
+                <div class="col-12 col-md-5 col-lg-5 col-xl-5"></div>
+                <div class="col-12 col-md-7 col-lg-7 col-xl-7">
+                    <form action="/pages/transaksi_detail/{{ $siswa->nisn }}" method="get">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" value="{{ old('tahun_dibayar') }}" name="tahun_dibayar" placeholder="Search berdasarkan Tahun">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-primary" type="submit" id="button-addon2"><i
+                                        class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
                 <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="table-responsive">
                         <table class="table table-bordered table-md">
