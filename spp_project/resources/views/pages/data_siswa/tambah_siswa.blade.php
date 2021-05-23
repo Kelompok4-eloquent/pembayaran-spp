@@ -33,100 +33,103 @@ Dashboard
 </div>
 
 <div class="row">
-    <div class="col-12 col-md-6 col-lg-12 col-xl-12">
-        <div class="card">
-            <div class="card-header">
-                <h3>Tambah Data Siswa</h3>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-                        {{-- input type text (typenya aja di pilih) --}}
-                        <div class="form-group">
-                            <label>NISN : </label>
-                            <input type="text" class="form-control">
+    <form action="/siswa_store" method="POST" enctype="multipart/form-data">
+    @csrf
+    {{ csrf_field() }}
+        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+            <div class="card">
+                <div class="card-header">
+                    <h3>Tambah Data Siswa</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                            {{-- input type text (typenya aja di pilih) --}}
+                            <div class="form-group">
+                                <label>NISN : </label>
+                                <input type="text" class="form-control" name="nisn" value="{{old('nisn','')}}">
+                            </div>
                         </div>
-                    </div>
-                    <br>
-                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-                        <div class="form-group">
-                            <label>NIS : </label>
-                            <input type="text" class="form-control">
+                        <br>
+                        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="form-group">
+                                <label>NIS : </label>
+                                <input type="text" class="form-control" name="nis" value="{{old('nis','')}}">
+                            </div>
                         </div>
-                    </div>
-                    <br>
-                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-                        <div class="form-group">
-                            <label>Upload foto : </label>
-                            <br>
-                            <input type="file" class="form-control choose" id="customFile">
+                        <br>
+                        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="form-group">
+                                <label>Upload foto : </label>
+                                <br>
+                                <input type="file" class="form-control choose" id="customFile" name="foto" value="{{old('foto','')}}">
+                            </div>
                         </div>
-                    </div>
 
-                    <br>
-                    <div class="col-12 col-md-6 col-lg-6 col-xl-6">
-                        <div class="form-group">
-                            <label>Nama Depan : </label>
-                            <input type="text" class="form-control">
+                        <br>
+                        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="form-group">
+                                <label>Nama Lengkap : </label>
+                                <input type="text" class="form-control" name="nama" value="{{old('nama','')}}">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-6 col-xl-6">
-                        <div class="form-group">
-                            <label>Nama Belakang : </label>
-                            <input type="text" class="form-control">
+                        <br>
+                        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                            {{-- input type number (typenya aja di pilih) --}}
+                            <div class="form-group">
+
+                                <label>No Telp : </label>
+                                <input type="number" class="form-control" name="no_telp" value="{{old('no_telp','')}}">
+                            </div>
                         </div>
-                    </div>
-                    <br>
-                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-                        {{-- input type number (typenya aja di pilih) --}}
-                        <div class="form-group">
-
-                            <label>No Telp : </label>
-                            <input type="number" class="form-control">
+                        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                            {{-- textarea --}}
+                            <div class="form-group">
+                                <label>Alamat : </label>
+                                <textarea class="form-control" cols="30" rows="50" name="alamat" value="{{old('alamat','')}}"></textarea>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-                        {{-- textarea --}}
-                        <div class="form-group">
-                            <label>Alamat : </label>
-                            <textarea class="form-control" cols="30" rows="50"></textarea>
+                        <br>
+                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                            <div class="form-group">
+                                <label>Kelas : </label>
+                                <select class="form-control" name="id_kelas">
+                                    <option disabled selected>== Pilih Kelas ==</option>
+                                    @foreach ($kelasan as $kelass)
+                                    <option value="{{ $kelass->id_kelas }}">{{ $kelass->nama_kelas }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <br>
-                    <div class="col-12 col-md-6 col-lg-6 col-xl-6">
-                        <div class="form-group">
-                            <label>Kelas : </label>
-                            <select class="form-control">
-                                <option disabled selected>== Pilih Kelas ==</option>
-                                @foreach ($kelasan as $kelass)
-
-
-                                <option value="{{ $kelass->id_kelas }}">{{ $kelass->nama_kelas }}</option>
-                                @endforeach
-                            </select>
+                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                            {{-- Select Option --}}
+                            <div class="form-group">
+                                <label>Tahun Masuk : </label>
+                                <select class="form-control" name="id_spp">
+                                    <option disabled selected>== Pilih Tahun Masuk ==</option>
+                                    @foreach ($espepe as $tahun_masuk)
+                                    <option value="{{ $tahun_masuk->id_spp }}">
+                                        {{ $tahun_masuk->tahun. " | " . number_format($tahun_masuk->nominal) }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
+
+                        <button type="submit" class="btn btn-primary btn-block m-3">Simpan</button>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-6 col-xl-6">
-                        {{-- Select Option --}}
-                        <div class="form-group">
-                            <label>Tahun Masuk : </label>
-                            <select class="form-control">
-                                <option disabled selected>== Pilih Tahun Masuk ==</option>
-                                @foreach ($espepe as $tahun_masuk)
-
-
-                                <option value="{{ $tahun_masuk->id_spp }}">
-                                    {{ $tahun_masuk->tahun. " | " . number_format($tahun_masuk->nominal) }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-
-                    <button class="btn btn-primary btn-block m-3">Simpan</button>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
+</form>
 @endsection

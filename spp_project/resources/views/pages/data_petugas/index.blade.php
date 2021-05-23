@@ -8,7 +8,7 @@ Dashboard
 </div>
 <a href="{{ url('pages/data_petugas/tambah_petugas') }}" class="btn btn-success mb-4">[+] Tambah Data Petugas</a>
 <div class="row">
-    <div class="col-12 col-md-6 col-lg-12 col-xl-12">
+    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
         @if (session()->has('success'))
         <div class="alert alert-success">
             @if(is_array(session('success')))

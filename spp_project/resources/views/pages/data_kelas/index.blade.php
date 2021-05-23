@@ -2,6 +2,9 @@
 @section('title')
 Dashboard
 @endsection
+@section('meta_token')
+<meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
 @section('content')
 <div class="section-header">
     <h1>Data Kelas</h1>
@@ -12,12 +15,14 @@ Dashboard
     <div class="col-12 col-md-7 col-lg-7 col-xl-7">
         <form action="/pages/data_kelas" method="get">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" name="kompetensi_keahlian" placeholder="Search berdasarkan jurusan">
+                <input type="text" class="form-control" name="kompetensi_keahlian"
+                    placeholder="Search berdasarkan jurusan">
                 <div class="input-group-append">
-                  <button class="btn btn-outline-primary" type="submit" id="button-addon2"><i class="fa fa-search"></i></button>
+                    <button class="btn btn-outline-primary" type="submit" id="button-addon2"><i
+                            class="fa fa-search"></i></button>
                 </div>
-              </div>
-              
+            </div>
+
         </form>
     </div>
 
@@ -28,13 +33,13 @@ Dashboard
         @if (session()->has('success'))
         <div class="alert alert-success">
             @if(is_array(session('success')))
-                <ul>
-                    @foreach (session('success') as $message)
-                        <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
+            <ul>
+                @foreach (session('success') as $message)
+                <li>{{ $message }}</li>
+                @endforeach
+            </ul>
             @else
-                {{ session('success') }}
+            {{ session('success') }}
             @endif
         </div>
         @endif
@@ -42,7 +47,7 @@ Dashboard
             <div class="card-header">
                 <h2 class="m-2">Data Kelas</h2>
             </div>
-            <div class="card-body">
+            <div class="card-body" id="deletebutton">
                 <div class="table-responsive">
                     <table class="table table-bordered table-md">
                         <tbody>
@@ -67,12 +72,11 @@ Dashboard
                                     <td>{{ $kelas->tingkat_kelas }}</td>
                                     <td>{{ $kelas->nama_kelas }}</td>
                                     <td>{{ $kelas->kompetensi_keahlian }}</td>
-                                    <td><a href="/pages/data_kelas/edit/{{ $kelas->id_kelas}}" class="m-2 btn btn-warning">Edit</a><form action="/pages/data_kelas/hapus/{{ $kelas->id_kelas}}" method="post">
-                                        {{ csrf_field() }}
-                                        {{ method_field('DELETE') }}
-                                        <input type="hidden" name="id_kelas" value="{{ $kelas->id_kelas }}">
-                                        <button type="submit" class="btn btn-danger m-2">Delete</button>
-                                    </form></td>
+                                    <td><a href="/pages/data_kelas/edit/{{ $kelas->id_kelas}}"
+                                            class="m-2 btn btn-warning">Edit</a>
+                                        <a href=" " class="m-2 btn btn-danger button"
+                                            data-id="{{$kelas->id_kelas}}">Delete</a>
+                                    </td>
                                 </tr>
                                 @endforeach
                                 @endif
@@ -81,8 +85,42 @@ Dashboard
                 </div>
                 {{ $kelasan->links() }}
             </div>
-            
+
         </div>
     </div>
 </div>
+@push('custom-script')
+<script>
+    $(document).on('click', '.button', function (e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        var token = $("meta[name='csrf-token']").attr("content");
+        swal({
+                title: "Are you sure! To Delete?",
+                type: "warning",
+                confirmButtonClass: "btn-danger",
+                confirmButtonText: "Yes!",
+                showCancelButton: true,
+            },
+            function () {
+                
+                $.ajax({
+                    url: "/pages/data_kelas/hapus/" + id,
+                    type: "DELETE",
+                    data: {
+                        "id": id,
+                        "_token": token,
+                    },
+
+                    success: function (data) {
+                        swal("Poof! Your imaginary file has been deleted!", {
+                            icon: "success",
+                        });
+                    }
+                });location.reload();
+            });
+    });
+
+</script>
+@endpush
 @endsection

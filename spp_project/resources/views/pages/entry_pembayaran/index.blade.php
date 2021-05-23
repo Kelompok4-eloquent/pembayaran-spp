@@ -31,25 +31,32 @@ Entry Pembayaran
 
         </form>
     </div>
-    <div class="col-12 col-md-12 col-lg-12 col-xl-12 card p-2">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-12 col-md-5 col-lg-5 col-xl-5">
-                    <p class="h5">Nama : Dzaki</p>
-                </div> <div class="col-12 col-md-7 col-lg-7 col-xl-7">
-                    <div class="ml-5"><img src="https://binomo-trader.com/p-assets/images/l34/reasons/r1-locales/r1-id-a8ad70f55953bab59931f3e83b390688.png" class="img-thumbnail ml-5" width="300px" alt="Cinque Terre"></div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
     @if (count($siswas)<=0) <center>
         <h1 class="text-align-center">Data Tak Di temukan</h1>
         </center>
         @else
         @foreach ($siswas as $siswa)
-        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-            {{$siswa}}
+        
+        <div class="col-12 col-md-12 col-lg-12 col-xl-12 card p-2">
+        
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-md-5 col-lg-5 col-xl-5"> 
+            
+                <p class="h5"><a href="/pages/transaksi_detail/{{$siswa->nisn}}">Lihat Status Transaksi</a></p>
+                 <p class="h5">NISN : {{$siswa->nisn}}</p>
+                  <p class="h5">NIS : {{$siswa->nis}}</p>
+                    <p class="h5">Nama Lengkap : {{$siswa->nama}}</p>
+                    
+                    <p class="h5">Kelas : {{($siswa->kelas==NULL)?"Belum Di definisikan":$siswa->kelas->nama_kelas}}</p>
+                    <p class="h5">Kompetensi keahlian : {{($siswa->kelas==NULL)?"Belum Di definisikan":$siswa->kelas->kompetensi_keahlian}}</p>
+                </div> <div class="col-12 col-md-7 col-lg-7 col-xl-7">
+                    <div class="ml-5"><img src="{{asset('user_picture/'.$siswa->foto)}}" class="img-thumbnail ml-5" width="300px" alt="Cinque Terre"></div>
+                </div>
+            </div>
         </div>
+    </div>
         @endforeach
         @endif
 </div>

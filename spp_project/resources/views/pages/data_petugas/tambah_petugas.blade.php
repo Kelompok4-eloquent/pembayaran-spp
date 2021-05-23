@@ -17,7 +17,7 @@ Dashboard
 <form action="/petugas_store" class="col-12" method="POST">
     @csrf
     {{ csrf_field() }}
-    <div class="col-12 col-md-6 col-lg-12 col-xl-12">
+    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
         @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -74,7 +74,7 @@ Dashboard
        
         </div>
     </div>
-
+    </form>
 </div>
-</form>
+
 @endsection
