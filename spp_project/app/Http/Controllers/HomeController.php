@@ -319,4 +319,23 @@ class HomeController extends Controller
         return redirect()->back()
             ->withSuccess('Sukses! Data Berhasil Di Tambahkan');
     }
+    public function cetak_struk($id_pembayaran)
+    {
+        # code...
+        $struk = Pembayaran::findOrfail($id_pembayaran);
+        // dd($struk->nisn);
+        $siswa = Siswa::where('nisn', '=', $struk->nisn)->firstOrFail();
+        $petugas = Petugas::where('id_petugas', '=', $struk->id_petugas)->firstOrFail();
+        // print_r($siswa);
+        $customPaper = array(0, 0, 1000, 1000);
+        $pdf_struk = PDF::loadview('pages.entry_pembayaran.cetak_struk', ['struk' => $struk, 'siswa' => $siswa, 'petugas' => $petugas])->setPaper($customPaper, 'landscape');
+        return $pdf_struk->stream('test-pdf.pdf');
+        // dd($struk);
+        // return view('pages.entry_pembayaran.cetak_struk',['struk'=>$struk,'siswa'=>$siswa,'petugas'=>$petugas]);
+    }
+    public function delete_transaksi(Request $id_pembayaran)
+    {
+        # code...
+        
+    }
 }
