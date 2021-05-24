@@ -158,9 +158,21 @@ Entry Pembayaran
                                     <td>{{ $pembayaran_user->jumlah_dibayar }}</td>
                                     <td>{{ $pembayaran_user->jumlah_dibayar - $pembayaran_user->jumlah_bayar }}</td>
                                     @if ($pembayaran_user->jumlah_dibayar - $pembayaran_user->jumlah_bayar < 0)
-                                    <td> <a href="" class="btn btn-danger"><s>Print Struk</s></a> <a href="" class="btn btn-dark ml-3">Delete</a></td>
+                                    <td> <a href="" class="btn btn-danger"><s>Print Struk</s></a> <form action="/transaksi_detail/hapus/{{ $pembayaran_user->id_pembayaran }}" method="post" class="d-inline" onsubmit="return confirm('Hapus Data Dengan No Transaksi : {{ md5($pembayaran_user->id_pembayaran) }}?')">
+                                        @csrf 
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-dark ml-3">Delete</button>
+                                        </form></td>
                                     @else
-                                        <td><a href="/cetak_struk/{{ $pembayaran_user->id_pembayaran }}" class="btn btn-success">Print Struk</a> <a href="" class="btn btn-dark ml-3">Delete</a></td>
+                                        <td>
+                                            <a href="/cetak_struk/{{ $pembayaran_user->id_pembayaran }}" class="btn btn-success btn-sm">Print Struk</a> 
+                                            <a href="/transaksi/edit/{{ $pembayaran_user->id_pembayaran }}" class="btn btn-warning btn-sm">Edit Struk</a>
+                                            <form action="/transaksi_detail/hapus/{{ $pembayaran_user->id_pembayaran }}" onsubmit="return confirm('Hapus Data Dengan No Transaksi : {{ md5($pembayaran_user->id_pembayaran) }}?')" method="post" class="mt-2">
+                                            @csrf 
+                                            @method('delete')
+                                            <button type="submit" class="btn text-danger btn-block btn-sm">Delete</button>
+                                            </form>
+                                        </td>
                                     @endif
                                     
                                 </tr>

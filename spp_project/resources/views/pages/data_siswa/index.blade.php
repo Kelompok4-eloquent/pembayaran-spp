@@ -82,8 +82,12 @@ Dashboard
                                 <td>{{ $siswa->alamat }}</td>
                                 <td><img src="{{ asset('user_picture/'.$siswa->foto) }}" width="200px"></td>
                                 <td>{{ $siswa->no_telp }}</td>
+                                @if ($siswa->id_spp==NULL)
+                                <td>Tak Di definisikan</td>
+                                @else
                                 <td>{{ $siswa->spp_tahun->tahun }}</td>
-                                <td><a href="" class="m-2 btn btn-warning">Edit</a><a href=" " class="m-2 btn btn-danger button"
+                                @endif
+                                <td><a href="/pages/data_siswa/edit/{{ $siswa->nisn }}" class="m-2 btn btn-warning">Edit</a><a href=" " class="m-2 btn btn-danger button"
                                     data-id="{{$siswa->nisn}}">Delete</a></td>
                             </tr>@endforeach
                         </tbody>

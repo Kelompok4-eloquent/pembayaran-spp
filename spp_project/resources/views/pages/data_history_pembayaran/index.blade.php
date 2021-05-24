@@ -51,4 +51,7 @@ Dashboard
     </div>
 </div>
 @endforeach
+<div class="row">
+    <div class="col-12 col-xl-12 col-md-12 col-sm-12">{{ $lunash->links('pagination::bootstrap-4') }}</div>
+</div>
 @endsection

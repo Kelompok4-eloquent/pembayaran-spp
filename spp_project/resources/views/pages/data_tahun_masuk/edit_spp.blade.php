@@ -13,9 +13,10 @@ Dashboard
 </div>
 
 <div class="row">
-    <form action="/spp_store" class="col-12" method="post">
+    <form action="/spp/update/{{ $spp->id_spp }}" class="col-12" method="post">
         @csrf
         {{ csrf_field() }}
+        {{ method_field('PUT') }}
     <div class="col-12 col-md-6 col-lg-12 col-xl-12">
         @if ($errors->any())
         <div class="alert alert-danger">
@@ -36,14 +37,14 @@ Dashboard
                          {{-- input type text (typenya aja di pilih) --}}
                         <div class="form-group">
                             <label>Tahun : </label>
-                            <input type="text" name="tahun" class="form-control" value="{{ old('tahun') }}">
+                            <input type="text" name="tahun" class="form-control" value="{{ $spp->tahun }}">
                         </div>
                     </div>
                     <br>
                     <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="form-group">
                             <label>Nominal : </label>
-                            <input type="text" name="nominal" class="form-control" value="{{ old('nominal') }}">
+                            <input type="text" name="nominal" class="form-control" value="{{ $spp->nominal }}">
                         </div>
                     </div>
                     <br>

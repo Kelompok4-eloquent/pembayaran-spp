@@ -9,8 +9,8 @@
                 <div class="d-sm-none d-lg-inline-block">{{ auth()->user()->username }}</div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                <a href="features-settings.html" class="dropdown-item has-icon">
-                    <i class="fas fa-cog"></i> Change's Passwords
+                <a href="{{ url('/settings') }}" class="dropdown-item has-icon">
+                    <i class="fas fa-cog"></i> Settings
                 </a>
                 <div class="dropdown-divider"></div>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="form-inline">

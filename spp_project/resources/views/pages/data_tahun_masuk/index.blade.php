@@ -24,9 +24,10 @@ Dashboard
         @endif
         <div class="card">
             <div class="card-header">
-                <h2>Data SPP Tahunan</h2>
+                <h2>Data SPP Tahunan</h2> 
             </div>
             <div class="card-body">
+                <span>Harap berhati hati dalam menghapus</span>
                 <div class="table-responsive">
                     <table class="table table-bordered table-md">
                         <tbody>
@@ -43,7 +44,7 @@ Dashboard
                                 <td>{{ $nomor+1 }}</td>
                                 <td>{{ $spp->tahun }}</td>
                                 <td>{{ $spp->nominal }}</td>
-                                <td><a href="" class="m-2 btn btn-warning">Edit</a><form action="/pages/data_tahun_masuk/hapus/{{ $spp->id_spp }}" method="post">
+                                <td><a href="/pages/data_tahun_masuk/edit/{{ $spp->id_spp }}" class="m-2 btn btn-warning">Edit</a><form action="/pages/data_tahun_masuk/hapus/{{ $spp->id_spp }}" onsubmit="return confirm('PERINGATAN!, Sebelum menghapus pastikan tahun masuk yang di hapus tak di gunakan oleh siswa!')" method="post">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
                                     <input type="hidden" name="id_spp" value="{{ $spp->id_spp }}">

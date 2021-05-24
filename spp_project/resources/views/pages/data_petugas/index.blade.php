@@ -47,8 +47,8 @@ Dashboard
                                 <td>{{ $user->nama_petugas }}</td>
                                 <td>{{ $user->level }}</td>
                                 <td>
-                                    <a href="" class="m-2 btn btn-warning">Edit</a>
-                                    <form action="/pages/data_petugas/hapus/{{ $user->id_petugas }}" method="post">
+                                    <a href="/pages/data_petugas/edit/{{ $user->id_petugas }}" class="m-2 btn btn-warning">Edit</a>
+                                    <form action="/pages/data_petugas/hapus/{{ $user->id_petugas }}" method="post" onsubmit="return confirm('Peringatan!, User yang telah di hapus maka akan menghapus data transaksinya juga,jadi berhati hati dalam menghapus!')">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
                                         <input type="hidden" name="id_petugas" value="{{ $user->id_petugas }}">

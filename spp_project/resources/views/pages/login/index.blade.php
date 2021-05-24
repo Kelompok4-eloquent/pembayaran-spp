@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title>Login &mdash; Stisla</title>
-
+    <link rel="shortcut icon" href="https://sekolahpedia.id/medias/logosekolah/SMK%20Taruna%20Bhakti.jpeg" type="image/x-icon">
     <!-- General CSS Files -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -27,7 +27,7 @@
         }
     </style>
 </head>
-<body>
+<body class="bg-white">
     <div class="row bg-white">
         <div class="col-12">
             @if ($errors->any())
@@ -75,10 +75,10 @@
 
                 <div class="form-group">
                     <div class="custom-control custom-checkbox">
-                        <input class="custom-control-input" type="checkbox" id="remember" >
+                        <input  type="checkbox" id="remember" >
 
                         <label onclick="myFunction()" class="custom-control-label" for="remember">
-                           Show Password
+                            Show Password
                         </label>
                     </div>
                 </div>
