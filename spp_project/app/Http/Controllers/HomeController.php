@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use App\Models\Siswa;
 use App\Models\Spp;
 use App\Models\Kelas;
@@ -12,6 +13,7 @@ use App\Models\Pembayaran;
 use App\Models\Petugas;
 use Illuminate\Support\Facades\File;
 use PDF;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
@@ -137,12 +139,12 @@ class HomeController extends Controller
     {
         # code...
         $this->validate($request, [
-            'nisn' => 'required|unique:siswa',
-            'nis' => 'required',
+            'nisn' => 'required|unique:siswa|max:10',
+            'nis' => 'required|unique:siswa|max:10',
             'nama' => 'required',
             'id_kelas' => 'required',
             'alamat' => 'required',
-            'no_telp' => 'required',
+            'no_telp' => 'required|max:13',
             'id_spp' => 'required',
             'foto' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
         ]);
@@ -177,6 +179,55 @@ class HomeController extends Controller
         return redirect()->action([HomeController::class, 'show_siswa'])
             ->withSuccess('Data Berhasil Di hapus');
     }
+    public function edit_siswa($nisn)
+    {
+        # code...
+        $siswas = Siswa::findOrFail($nisn);
+        $spp = Spp::all();
+        $kelass = Kelas::all();
+        return view('pages.data_siswa.edit_siswa', ['siswa' => $siswas,'espepe' => $spp,
+        // compact data kelas
+        'kelasan' => $kelass]);
+    }
+    public function update_siswa($nisn, Request $request)
+    {
+        # code...
+        $this->validate($request, [
+            'nisn' => 'required|max:10',
+            'nis' => 'required|max:10',
+            'nama' => 'required',
+            'id_kelas' => 'required',
+            'alamat' => 'required',
+            'no_telp' => 'required|max:13',
+            'id_spp' => 'required',
+            'foto' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+        $ubah = Siswa::findOrFail($nisn);
+        unlink("user_picture/" . $ubah->foto);
+        $foto = $request->file('foto');
+
+        $nama_foto = time() . "_" . $foto->getClientOriginalName();
+
+        // isi dengan nama folder tempat kemana file diupload
+        $moved = 'user_picture';
+        $foto->move($moved, $nama_foto);
+
+        $dt = [
+            'nisn'=>$request['nisn'],
+            'nisn'=>$request['nis'],
+            'nama'=>$request['nama'],
+            'id_kelas'=>$request['id_kelas'],
+            'alamat'=>$request['alamat'],
+            'no_telp'=>$request['no_telp'],
+            'id_spp'=>$request['id_spp'],
+            'foto'=>$nama_foto,
+        ];
+        $ubah->update($dt);
+        return redirect()->action([HomeController::class, 'show_siswa'])
+            ->with('success','Data Berhasil Di ubah');
+        
+    }
+
 
     // Crud data petugas
     public function show_petugas()
@@ -193,7 +244,7 @@ class HomeController extends Controller
     public function petugas_store(Request $request)
     {
         $this->validate($request, [
-            'username' => 'required',
+            'username' => 'required|unique:petugas',
             'nama_petugas' => 'required',
             'password' => 'required',
             'level' => 'required',
@@ -216,13 +267,37 @@ class HomeController extends Controller
         return redirect()->action([HomeController::class, 'show_petugas'])
             ->withSuccess('Data Berhasil Di hapus');
     }
+    public function edit_petugas($id_petugas)
+    {
+        # code...
+        $petugas = Petugas::findOrFail($id_petugas);
+        return view('pages.data_petugas.edit_petugas', ['petugas' => $petugas]);
+    }
+    public function update_petugas($id_petugas, Request $request)
+    {
+        # code...
+        $this->validate($request, [
+            'username' => 'required',
+            'nama_petugas' => 'required',
+            'level'=>'required'
+        ]);
+        $petugas = Petugas::findOrFail($id_petugas);
+        $petugas->username = $request->username;
+        $petugas->nama_petugas = $request->nama_petugas;
+        $petugas->level = $request->level;
+        $petugas->save();
+        
+        return redirect()->action([HomeController::class, 'show_petugas'])
+            ->with('success','Data Berhasil Di ubah');
+        
+    }
 
 
     // Show History_data (Full)
     public function history_pembayaran()
     {
         # code...
-        $pembayaran_lunass = Pembayaran::orderBy('tanggal_bayar', 'ASC')->get();
+        $pembayaran_lunass = Pembayaran::orderBy('tanggal_bayar', 'ASC')->paginate(10);
         return view('pages.data_history_pembayaran.index', ['lunash' => $pembayaran_lunass]);
     }
 
@@ -244,7 +319,7 @@ class HomeController extends Controller
     public function spp_store(Request $request)
     {
         $this->validate($request, [
-            'tahun' => 'required',
+            'tahun' => 'required|unique:spp',
             'nominal' => 'required',
         ]);
 
@@ -263,6 +338,27 @@ class HomeController extends Controller
         $petugas->delete();
         return redirect()->action([HomeController::class, 'show_spp'])
             ->withSuccess('Data Berhasil Di hapus');
+    }
+    public function edit_spp($id_spp)
+    {
+        # code...
+        $spph = Spp::findOrFail($id_spp);
+        return view('pages.data_tahun_masuk.edit_spp', ['spp' => $spph]);
+    }
+    public function update_spp($id_spp, Request $request)
+    {
+        # code...
+        $this->validate($request, [
+            'tahun' => 'required',
+            'nominal' => 'required',
+        ]);
+        $spp = Spp::findOrFail($id_spp);
+        $spp->tahun = $request->tahun;
+        $spp->nominal = $request->nominal;
+        $spp->save();
+        return redirect()->action([HomeController::class, 'show_spp'])
+            ->with('success','Data Berhasil Di ubah');
+        
     }
 
 
@@ -317,7 +413,7 @@ class HomeController extends Controller
         ]);
 
         return redirect()->back()
-            ->withSuccess('Sukses! Data Berhasil Di Tambahkan');
+            ->withSuccess('Sukses! Transaksi Berhasil Di Tambahkan');
     }
     public function cetak_struk($id_pembayaran)
     {
@@ -333,9 +429,72 @@ class HomeController extends Controller
         // dd($struk);
         // return view('pages.entry_pembayaran.cetak_struk',['struk'=>$struk,'siswa'=>$siswa,'petugas'=>$petugas]);
     }
-    public function delete_transaksi(Request $id_pembayaran)
+    public function delete_transaksi($id_pembayaran)
     {
         # code...
-        
+        Pembayaran::findOrFail($id_pembayaran)->delete();
+        return redirect()->back()
+            ->withSuccess('Sukses! Data Berhasil Di Hapus');
     }
+    public function edit_transaksi($id_pembayaran)
+    {
+        # code...
+        $payment = Pembayaran::findOrFail($id_pembayaran);
+        return view('pages.entry_pembayaran.edit_transaksi', ['transaksi' => $payment]);
+    }
+    public function update_transaksi($id_pembayaran, Request $request)
+    {
+        # code...
+        $this->validate($request, [
+            'jumlah_dibayar' => 'required',
+            'bulan_dibayar' => 'required',
+            'tahun_dibayar' => 'required',
+        ]);
+        $pembayaran = Pembayaran::where('id_pembayaran',$id_pembayaran)->firstOrFail();
+        $pembayaran->jumlah_dibayar = $request->jumlah_dibayar;
+        $pembayaran->bulan_dibayar = $request->bulan_dibayar;
+        $pembayaran->tahun_dibayar = $request->tahun_dibayar;
+        $pembayaran->save();
+        $linkto = "/pages/transaksi_detail/$request->nisn";
+        return redirect($linkto)
+            ->withSuccess('Data Transaksi Berhasil Di ubah');
+    }
+
+    // Edit Password_User
+    public function show_setting()
+    {
+        # code...
+        // $petugas = Petugas::findOrFail(auth()->user()->id_petugas);
+        return view('pages.login.ganti_password');
+    }
+    public function password_store(Request $request)
+    {
+        # code...
+        $this->validate($request, [
+            'old_password' => 'required|different:new_password',
+            'new_password' => 'required',
+            'confirmed_password' => 'required|same:new_password',
+            
+        ]);
+        // dd(auth()->user()->password);
+        // dd(password_hash('admin',PASSWORD_DEFAULT));
+        if(Hash::make($request->old_password)!=auth()->user()->password){
+            echo auth()->user()->password;
+        $petugas = Petugas::where('id_petugas','=',auth()->user()->id_petugas)->firstOrFail();
+        $petugas->password = Hash::make($request->new_password);
+        $petugas->save();
+         return redirect()->action([HomeController::class, 'show_setting'])
+            ->with('success','Password Berhasil Di Ubah');
+        }else{
+            return redirect()->action([HomeController::class, 'show_setting'])
+            ->with('error','Password Gagal Di Ubah');
+        }
+
+        // if()
+        // $petugas = Petugas::findOrFail(auth()->user()->id_petugas);
+        // $petugas->password = $request->new_password;
+        // $petugas->save();
+       
+    }
+    
 }
