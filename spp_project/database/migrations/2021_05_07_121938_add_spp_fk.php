@@ -15,7 +15,7 @@ class AddSppFk extends Migration
     {
         Schema::table('siswa', function (Blueprint $table) {
             //
-            $table->foreign('id_spp')->references('id_spp')->on('spp')->onDelete(NULL)->onUpdate('cascade');
+            $table->foreign('id_spp')->references('id_spp')->on('spp')->onDelete('set null')->onUpdate('cascade');
         });
     }
 
