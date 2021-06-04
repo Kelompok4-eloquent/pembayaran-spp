@@ -125,7 +125,8 @@ Entry Pembayaran
                 <div class="col-12 col-md-7 col-lg-7 col-xl-7">
                     <form action="/pages/transaksi_detail/{{ $siswa->nisn }}" method="get">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" value="{{ old('tahun_dibayar') }}" name="tahun_dibayar" placeholder="Search berdasarkan Tahun">
+                            <input type="text" class="form-control" value="{{ old('tahun_dibayar') }}"
+                                name="tahun_dibayar" placeholder="Search berdasarkan Tahun">
                             <div class="input-group-append">
                                 <button class="btn btn-outline-primary" type="submit" id="button-addon2"><i
                                         class="fa fa-search"></i></button>
@@ -176,10 +177,11 @@ Entry Pembayaran
                                     @endif
                                     
                                 </tr>
-@endforeach
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
+                    <div class="card-footer">{{ $pembayaran_lunass->links('pagination::bootstrap-4') }}</div>
                 </div>
             </div>
         </div>

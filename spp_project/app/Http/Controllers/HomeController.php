@@ -383,9 +383,9 @@ class HomeController extends Controller
         $siswa = Siswa::where('nisn', '=', $nisn)->firstOrFail();
         // dd($request->tahun_dibayar);
         if ($request->has('tahun_dibayar')) {
-            $pembayaran_lunass = Pembayaran::where([['nisn', "=", $nisn], ['tahun_dibayar', 'LIKE', '%' . $request->tahun_dibayar . '%']])->get();
+            $pembayaran_lunass = Pembayaran::where([['nisn', "=", $nisn], ['tahun_dibayar', 'LIKE', '%' . $request->tahun_dibayar . '%']])->paginate(12);
         } else {
-            $pembayaran_lunass = Pembayaran::where('nisn', "=", $nisn)->get();
+            $pembayaran_lunass = Pembayaran::where('nisn', "=", $nisn)->paginate(12);
         }
 
         return view('pages.entry_pembayaran.detail_transaksi', ['siswa' => $siswa, 'pembayaran_lunass' => $pembayaran_lunass]);
